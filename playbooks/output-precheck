@@ -1,0 +1,118 @@
+[root@awx playbooks]# ansible-playbook -i int --limit 1 precheck.yml -k
+SSH password:
+[WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
+
+PLAY [Cloud Migration PreCheck] ***********************************************************************************************************
+
+TASK [debug] ******************************************************************************************************************************
+fatal: [192.168.32.128]: FAILED! => {
+    "msg": "Must select TAG to use this playbook"
+}
+
+PLAY RECAP ********************************************************************************************************************************
+192.168.32.128             : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+
+[root@awx playbooks]# ansible-playbook -i int --limit 1 precheck.yml --tags precheck -k
+SSH password:
+[WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
+
+PLAY [Cloud Migration PreCheck] ***********************************************************************************************************
+
+TASK [Precheck at the time of cloud migration] ********************************************************************************************
+changed: [192.168.32.128] => (item=df -h)
+changed: [192.168.32.128] => (item=route -n)
+changed: [192.168.32.128] => (item=ifconfig)
+
+TASK [debug] ******************************************************************************************************************************
+ok: [192.168.32.128] => {
+    "msg": [
+        [
+            "Filesystem               Size  Used Avail Use% Mounted on",
+            "devtmpfs                 908M     0  908M   0% /dev",
+            "tmpfs                    920M     0  920M   0% /dev/shm",
+            "tmpfs                    920M  1.1M  919M   1% /run",
+            "tmpfs                    920M     0  920M   0% /sys/fs/cgroup",
+            "/dev/mapper/centos-root   14G  7.2G  6.4G  53% /",
+            "/dev/sda1                950M  150M  800M  16% /boot",
+            "overlay                   14G  7.2G  6.4G  53% /var/lib/docker/overlay2/8e952980b6fe3503c64b795a0c4b41b341f37cf7170035ee6caba6793506126d/merged",
+            "shm                       64M     0   64M   0% /var/lib/docker/containers/3645a56a89cc8f37217b4bb16a16cc097b06ce7e8c6c9c5a5fc0c64c5e01e620/shm",
+            "tmpfs                    184M     0  184M   0% /run/user/0"
+        ],
+        [
+            "Kernel IP routing table",
+            "Destination     Gateway         Genmask         Flags Metric Ref    Use Iface",
+            "0.0.0.0         192.168.32.2    0.0.0.0         UG    100    0        0 ens33",
+            "10.0.0.0        0.0.0.0         255.255.0.0     U     0      0        0 br-a6455ed3f23c",
+            "172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 docker0",
+            "192.168.32.0    0.0.0.0         255.255.255.0   U     100    0        0 ens33"
+        ],
+        [
+            "br-a6455ed3f23c: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500",
+            "        inet 10.0.0.1  netmask 255.255.0.0  broadcast 0.0.0.0",
+            "        ether 02:42:b2:9a:31:05  txqueuelen 0  (Ethernet)",
+            "        RX packets 32  bytes 2592 (2.5 KiB)",
+            "        RX errors 0  dropped 0  overruns 0  frame 0",
+            "        TX packets 32  bytes 2592 (2.5 KiB)",
+            "        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0",
+            "",
+            "docker0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500",
+            "        inet 172.17.0.1  netmask 255.255.0.0  broadcast 0.0.0.0",
+            "        inet6 fe80::42:f9ff:fee5:4e4b  prefixlen 64  scopeid 0x20<link>",
+            "        ether 02:42:f9:e5:4e:4b  txqueuelen 0  (Ethernet)",
+            "        RX packets 7  bytes 488 (488.0 B)",
+            "        RX errors 0  dropped 0  overruns 0  frame 0",
+            "        TX packets 6  bytes 516 (516.0 B)",
+            "        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0",
+            "",
+            "ens33: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500",
+            "        inet 192.168.32.128  netmask 255.255.255.0  broadcast 192.168.32.255",
+            "        inet6 fe80::df5b:7224:31e3:513  prefixlen 64  scopeid 0x20<link>",
+            "        inet6 fe80::8422:aba3:277f:f2e5  prefixlen 64  scopeid 0x20<link>",
+            "        ether 00:0c:29:69:a8:84  txqueuelen 1000  (Ethernet)",
+            "        RX packets 372  bytes 290966 (284.1 KiB)",
+            "        RX errors 0  dropped 0  overruns 0  frame 0",
+            "        TX packets 271  bytes 29560 (28.8 KiB)",
+            "        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0",
+            "        device interrupt 19  base 0x2000  ",
+            "",
+            "lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536",
+            "        inet 127.0.0.1  netmask 255.0.0.0",
+            "        inet6 ::1  prefixlen 128  scopeid 0x10<host>",
+            "        loop  txqueuelen 1000  (Local Loopback)",
+            "        RX packets 32  bytes 2592 (2.5 KiB)",
+            "        RX errors 0  dropped 0  overruns 0  frame 0",
+            "        TX packets 32  bytes 2592 (2.5 KiB)",
+            "        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0",
+            "",
+            "vethbd60b92: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500",
+            "        inet6 fe80::5866:bbff:fe04:7612  prefixlen 64  scopeid 0x20<link>",
+            "        ether 5a:66:bb:04:76:12  txqueuelen 0  (Ethernet)",
+            "        RX packets 7  bytes 586 (586.0 B)",
+            "        RX errors 0  dropped 0  overruns 0  frame 0",
+            "        TX packets 12  bytes 1032 (1.0 KiB)",
+            "        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0"
+        ]
+    ]
+}
+
+PLAY RECAP ********************************************************************************************************************************
+192.168.32.128             : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+[root@awx playbooks]# ansible-playbook -i int --limit 1 precheck.yml --tags shutdown -k
+SSH password:
+[WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
+
+PLAY [Cloud Migration PreCheck] ***********************************************************************************************************
+
+TASK [Shutdown servers for Cloud migration] ***********************************************************************************************
+fatal: [192.168.32.128]: FAILED! => {"msg": "Failed to connect to the host via ssh: ssh: connect to host 192.168.32.128 port 22: Connection refused"}
+...ignoring
+
+TASK [Confirming shutdown status] *********************************************************************************************************
+fatal: [192.168.32.128]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 192.168.32.128 port 22: Connection refused", "unreachable": true}
+
+PLAY RECAP ********************************************************************************************************************************
+192.168.32.128             : ok=1    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=1
+
+[root@awx playbooks]#
+

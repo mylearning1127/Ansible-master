@@ -1,0 +1,79 @@
+=========================================================================================================================
+
+[root@Ansible playbooks]# ansible patch --list-hosts
+SSH password:
+  hosts (2):
+    client1
+    client2
+[root@Ansible playbooks]#
+
+==========================================================================================================================
+
+[root@Ansible playbooks]# ansible-playbook 01_playbook.yml --check
+SSH password:
+
+PLAY [First playbook] *****************************************************************************************************
+
+TASK [Gathering Facts] ****************************************************************************************************
+[WARNING]: Platform linux on host client1 is using the discovered Python interpreter at /usr/bin/python, but future
+installation of another Python interpreter could change this. See
+https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information.
+ok: [client1]
+
+TASK [Touch file i tmp] ***************************************************************************************************
+ok: [client1]
+
+PLAY RECAP ****************************************************************************************************************
+client1                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+[root@Ansible playbooks]#
+
+===========================================================================================================================
+[root@Ansible playbooks]# ansible patch -m ping
+SSH password:
+BECOME password[defaults to SSH password]:
+client1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+client2 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: ssh: Could not resolve hostname client2: Name or service not known",
+    "unreachable": true
+}
+
+[root@Ansible playbooks]# ansible -m ping client1    ; we can directly use managed node names in Ad-Hoc command.
+
+SSH password:
+BECOME password[defaults to SSH password]:
+client1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+[root@Ansible playbooks]#
+============================================================================================================================
+ansible -m command -a "/usr/sbin/ifconfig -a" client1
+ansible -m shell -a "/usr/sbin/ifconfig -a" client1
+============================================================================================================================
+ansible-playbook 10_Handlers_Tags.yml -i int --skip-tags ntpd     ; skips ntpd tag task and execute other task which don't have ntpd tags name
+ansible-playbook 10_Handlers_Tags.yml -i int --tags=ntpd
+============================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+---
+- name: Checking ifconfig using command module                    # first play
+  hosts: web
+  tasks:
+  - name: checking ifconfig using command module
+    command: "/usr/sbin/ifconfig -a"
+    register: ip_out
+    
+  - debug:
+     var: ip_out
+
+- name: Checking uname in command module                            # Second play
+  hosts: app
+  tasks:
+  - name: checking ifconfig
+    command: "uname -a"
+    register: uname_out
+
+  - debug:
+     var: uname_out
+

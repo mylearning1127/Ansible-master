@@ -1,0 +1,25 @@
+---
+- name: First playbook
+  hosts: web
+  gather_facts: no  
+  tasks:
+  - name: get the rpm package facts
+    package_facts:
+     manager: "auto"
+
+  - name: rebbot machine
+    shell:  "sleep 2 && reboot"
+    async: "20" # Do not care for 10 sec
+    poll: "1"
+
+  - name: wait_for Port 22 open
+    wait_for_connection:
+     delay: "30"
+     timeout: "60"
+
+  - name: Checking Package Version
+    debug: 
+      msg:
+       - "Package Name: {{ansible_facts.packages['openssh'][0].name}}"
+       - "Package version: {{ansible_facts.packages['openssh'][0].version}}"
+

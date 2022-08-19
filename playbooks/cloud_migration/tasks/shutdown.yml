@@ -1,0 +1,6 @@
+  - name: Shutdown servers for Cloud migration
+    command: "shutdown now"
+
+  - name: Confirming shutdown status
+    ansible.builtin.ping:
+

@@ -1,0 +1,48 @@
+---
+- name: check play
+  hosts: all
+  become: true
+  gather_facts: no
+  vars:
+   report: /report/patching_report/
+  tasks:
+
+  - name: Post-check on cloud migrated servers
+    shell: " {{ item }}"
+    loop:
+     - "cat /etc/hosts"
+     - "ifconfig"
+     - "df -h"
+     - "df -h | awk '{print $6}'" 
+    register: postcheck_output
+    tags: postcheck
+  
+  - debug: "var=postcheck_output.results[{{ item }}].stdout"
+    with_sequence: start=0 end=22
+    tags: postcheck
+
+  - debug: var=ansible_all_ipv4_addresses
+    tags: postcheck
+  - name: save collected infromation in data directory
+    copy:
+      dest: "{{ report }}/{{ ansible_host }}_postcheck1.log"
+      content: |
+        output of etc/hosts:
+        --------------------------------------------
+        {{ postcheck_output.results[0].stdout }}
+
+
+        output of "ifconfig":
+        --------------------------------------------
+        {{ postcheck_output.results[1].stdout }}
+
+
+        output of "df -h" :
+        --------------------------------------------
+        {{ postcheck_output.results[2].stdout }}
+
+        output of "df -h" :
+        --------------------------------------------
+        {{ postcheck_output.results[3].stdout }}
+    tags: postcheck
+

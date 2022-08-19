@@ -1,0 +1,12 @@
+---
+- name: check version
+  hosts: all
+  
+  tasks:
+  - name: test module
+    testmodule:
+     app: java
+     appv: 3.4
+    register: printversion
+
+  - debug: var=printversion

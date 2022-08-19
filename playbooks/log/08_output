@@ -1,0 +1,279 @@
+
+PLAY [Checking with_items and Netsed_items] ********************************************************************************
+
+TASK [with_items check] ****************************************************************************************************
+ok: [192.168.140.129] => (item={u'group': u'root', u'name': u'suthan'})
+failed: [192.168.140.129] (item={u'group': u'dev', u'name': u'suthan1'}) => {"ansible_loop_var": "item", "changed": false, "item": {"group": "dev", "name": "suthan1"}, "msg": "Group dev does not exist"}
+...ignoring
+
+TASK [With_nested check] ***************************************************************************************************
+failed: [192.168.140.129] (item=[u'suthan', u'clientdb']) => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python"}, "ansible_loop_var": "item", "changed": false, "item": ["suthan", "clientdb"], "msg": "The PyMySQL (Python 2.7 and Python 3.X) or MySQL-python (Python 2.X) module is required."}
+failed: [192.168.140.129] (item=[u'suthan', u'empdb']) => {"ansible_loop_var": "item", "changed": false, "item": ["suthan", "empdb"], "msg": "The PyMySQL (Python 2.7 and Python 3.X) or MySQL-python (Python 2.X) module is required."}
+failed: [192.168.140.129] (item=[u'suthan', u'patchdb']) => {"ansible_loop_var": "item", "changed": false, "item": ["suthan", "patchdb"], "msg": "The PyMySQL (Python 2.7 and Python 3.X) or MySQL-python (Python 2.X) module is required."}
+failed: [192.168.140.129] (item=[u'karan', u'clientdb']) => {"ansible_loop_var": "item", "changed": false, "item": ["karan", "clientdb"], "msg": "The PyMySQL (Python 2.7 and Python 3.X) or MySQL-python (Python 2.X) module is required."}
+failed: [192.168.140.129] (item=[u'karan', u'empdb']) => {"ansible_loop_var": "item", "changed": false, "item": ["karan", "empdb"], "msg": "The PyMySQL (Python 2.7 and Python 3.X) or MySQL-python (Python 2.X) module is required."}
+failed: [192.168.140.129] (item=[u'karan', u'patchdb']) => {"ansible_loop_var": "item", "changed": false, "item": ["karan", "patchdb"], "msg": "The PyMySQL (Python 2.7 and Python 3.X) or MySQL-python (Python 2.X) module is required."}
+...ignoring
+
+TASK [calling Vars in with_nested] *****************************************************************************************
+failed: [192.168.140.129] (item=[u'suthan', u'cliendb']) => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python"}, "ansible_loop_var": "item", "changed": false, "item": ["suthan", "cliendb"], "msg": "The PyMySQL (Python 2.7 and Python 3.X) or MySQL-python (Python 2.X) module is required."}
+failed: [192.168.140.129] (item=[u'suthan', u'empdb']) => {"ansible_loop_var": "item", "changed": false, "item": ["suthan", "empdb"], "msg": "The PyMySQL (Python 2.7 and Python 3.X) or MySQL-python (Python 2.X) module is required."}
+failed: [192.168.140.129] (item=[u'karan', u'cliendb']) => {"ansible_loop_var": "item", "changed": false, "item": ["karan", "cliendb"], "msg": "The PyMySQL (Python 2.7 and Python 3.X) or MySQL-python (Python 2.X) module is required."}
+failed: [192.168.140.129] (item=[u'karan', u'empdb']) => {"ansible_loop_var": "item", "changed": false, "item": ["karan", "empdb"], "msg": "The PyMySQL (Python 2.7 and Python 3.X) or MySQL-python (Python 2.X) module is required."}
+...ignoring
+
+TASK [Var calling using with_dict Method] **********************************************************************************
+ok: [192.168.140.129] => (item={u'key': u'bob', u'value': {u'name': u'Bob Bananarama', u'telephone': u'987-654-3210'}}) => {
+    "msg": "User {u'name': u'Bob Bananarama', u'telephone': u'987-654-3210'} is Bob Bananarama (987-654-3210)"
+}
+ok: [192.168.140.129] => (item={u'key': u'alice', u'value': {u'name': u'Alice Appleworth', u'telephone': u'123-456-7890'}}) => {
+    "msg": "User {u'name': u'Alice Appleworth', u'telephone': u'123-456-7890'} is Alice Appleworth (123-456-7890)"
+}
+
+TASK [with_file testing] ***************************************************************************************************
+ok: [192.168.140.129] => (item=Hello This is First file) => {
+    "msg": "Hello This is First file"
+}
+ok: [192.168.140.129] => (item=Hello This is Second file :)
+This is Second line of second file) => {
+    "msg": "Hello This is Second file :)\nThis is Second line of second file"
+}
+
+TASK [debug loops in normal way] *******************************************************************************************
+ok: [192.168.140.129] => {
+    "msg": [
+        [
+            "a", 
+            "b", 
+            "c", 
+            "d"
+        ], 
+        [
+            1, 
+            2, 
+            3, 
+            4
+        ]
+    ]
+}
+
+TASK [debug loops in with_together method] *********************************************************************************
+ok: [192.168.140.129] => (item=[u'a', 1]) => {
+    "msg": [
+        "a", 
+        "1"
+    ]
+}
+ok: [192.168.140.129] => (item=[u'b', 2]) => {
+    "msg": [
+        "b", 
+        "2"
+    ]
+}
+ok: [192.168.140.129] => (item=[u'c', 3]) => {
+    "msg": [
+        "c", 
+        "3"
+    ]
+}
+ok: [192.168.140.129] => (item=[u'd', 4]) => {
+    "msg": [
+        "d", 
+        "4"
+    ]
+}
+
+TASK [debug loops in with_items method] ************************************************************************************
+ok: [192.168.140.129] => (item=a) => {
+    "msg": [
+        "a"
+    ]
+}
+ok: [192.168.140.129] => (item=b) => {
+    "msg": [
+        "b"
+    ]
+}
+ok: [192.168.140.129] => (item=c) => {
+    "msg": [
+        "c"
+    ]
+}
+ok: [192.168.140.129] => (item=d) => {
+    "msg": [
+        "d"
+    ]
+}
+ok: [192.168.140.129] => (item=1) => {
+    "msg": [
+        1
+    ]
+}
+ok: [192.168.140.129] => (item=2) => {
+    "msg": [
+        2
+    ]
+}
+ok: [192.168.140.129] => (item=3) => {
+    "msg": [
+        3
+    ]
+}
+ok: [192.168.140.129] => (item=4) => {
+    "msg": [
+        4
+    ]
+}
+
+TASK [debug loops in with_nested method] ***********************************************************************************
+ok: [192.168.140.129] => (item=[u'a', 1]) => {
+    "msg": [
+        "a", 
+        "1"
+    ]
+}
+ok: [192.168.140.129] => (item=[u'a', 2]) => {
+    "msg": [
+        "a", 
+        "2"
+    ]
+}
+ok: [192.168.140.129] => (item=[u'a', 3]) => {
+    "msg": [
+        "a", 
+        "3"
+    ]
+}
+ok: [192.168.140.129] => (item=[u'a', 4]) => {
+    "msg": [
+        "a", 
+        "4"
+    ]
+}
+ok: [192.168.140.129] => (item=[u'b', 1]) => {
+    "msg": [
+        "b", 
+        "1"
+    ]
+}
+ok: [192.168.140.129] => (item=[u'b', 2]) => {
+    "msg": [
+        "b", 
+        "2"
+    ]
+}
+ok: [192.168.140.129] => (item=[u'b', 3]) => {
+    "msg": [
+        "b", 
+        "3"
+    ]
+}
+ok: [192.168.140.129] => (item=[u'b', 4]) => {
+    "msg": [
+        "b", 
+        "4"
+    ]
+}
+ok: [192.168.140.129] => (item=[u'c', 1]) => {
+    "msg": [
+        "c", 
+        "1"
+    ]
+}
+ok: [192.168.140.129] => (item=[u'c', 2]) => {
+    "msg": [
+        "c", 
+        "2"
+    ]
+}
+ok: [192.168.140.129] => (item=[u'c', 3]) => {
+    "msg": [
+        "c", 
+        "3"
+    ]
+}
+ok: [192.168.140.129] => (item=[u'c', 4]) => {
+    "msg": [
+        "c", 
+        "4"
+    ]
+}
+ok: [192.168.140.129] => (item=[u'd', 1]) => {
+    "msg": [
+        "d", 
+        "1"
+    ]
+}
+ok: [192.168.140.129] => (item=[u'd', 2]) => {
+    "msg": [
+        "d", 
+        "2"
+    ]
+}
+ok: [192.168.140.129] => (item=[u'd', 3]) => {
+    "msg": [
+        "d", 
+        "3"
+    ]
+}
+ok: [192.168.140.129] => (item=[u'd', 4]) => {
+    "msg": [
+        "d", 
+        "4"
+    ]
+}
+
+TASK [Directly use Loop] ***************************************************************************************************
+ok: [192.168.140.129] => (item=1) => {
+    "msg": "loop value is: 1"
+}
+ok: [192.168.140.129] => (item=2) => {
+    "msg": "loop value is: 2"
+}
+ok: [192.168.140.129] => (item=3) => {
+    "msg": "loop value is: 3"
+}
+ok: [192.168.140.129] => (item=4) => {
+    "msg": "loop value is: 4"
+}
+ok: [192.168.140.129] => (item=5) => {
+    "msg": "loop value is: 5"
+}
+
+TASK [Checking with_sequence] **********************************************************************************************
+ok: [192.168.140.129] => (item=1) => {
+    "msg": "Print sequence: 1"
+}
+ok: [192.168.140.129] => (item=2) => {
+    "msg": "Print sequence: 2"
+}
+ok: [192.168.140.129] => (item=3) => {
+    "msg": "Print sequence: 3"
+}
+ok: [192.168.140.129] => (item=4) => {
+    "msg": "Print sequence: 4"
+}
+ok: [192.168.140.129] => (item=5) => {
+    "msg": "Print sequence: 5"
+}
+
+TASK [Until loop] **********************************************************************************************************
+FAILED - RETRYING: Until loop (5 retries left).
+FAILED - RETRYING: Until loop (4 retries left).
+FAILED - RETRYING: Until loop (3 retries left).
+FAILED - RETRYING: Until loop (2 retries left).
+FAILED - RETRYING: Until loop (1 retries left).
+fatal: [192.168.140.129]: FAILED! => {"attempts": 5, "changed": true, "cmd": "/test.sh", "delta": "0:00:00.012087", "end": "2021-10-19 06:21:05.736216", "msg": "non-zero return code", "rc": 127, "start": "2021-10-19 06:21:05.724129", "stderr": "/bin/sh: /test.sh: No such file or directory", "stderr_lines": ["/bin/sh: /test.sh: No such file or directory"], "stdout": "", "stdout_lines": []}
+...ignoring
+
+TASK [loop_var testing] ****************************************************************************************************
+ok: [192.168.140.129] => (item=a) => {
+    "msg": "Instead of item we are calling loop_vars: a"
+}
+ok: [192.168.140.129] => (item=b) => {
+    "msg": "Instead of item we are calling loop_vars: b"
+}
+
+PLAY RECAP *****************************************************************************************************************
+192.168.140.129            : ok=13   changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4   
+

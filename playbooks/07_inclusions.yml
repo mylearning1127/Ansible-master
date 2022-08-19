@@ -1,0 +1,21 @@
+---
+- name: Explore more on Inclusions
+  hosts: web
+  become: true
+  vars:
+   package: httpd
+  tasks:
+  - name: Including vars file                     # Output stored in tasks/07_output
+    include_vars: vars/07_vars.yml
+
+  - name: package installation                    # name calling from tasks/07_package_intsall.yml name
+    include: tasks/07_package_intsall.yml
+ 
+  - name: creating content                        # name calling from tasks/07_copy_content.yml             
+    include: tasks/07_copy_content.yml
+  
+  - name: Starting service
+    include: tasks/07_service_start.yml
+
+  - name: checking URI service
+    include: tasks/07_checking_uri.yml

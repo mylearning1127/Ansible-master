@@ -1,0 +1,61 @@
+Using /opt/Ansible/playbooks/ansible.cfg as config file
+
+PLAY [Error Handling] ******************************************************************************************************
+
+TASK [Starting httpd service] **********************************************************************************************
+changed: [docker] => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python"}, "changed": true, "cmd": "httpd -k start", "delta": "0:00:00.108903", "end": "2021-10-21 09:31:26.846676", "rc": 0, "start": "2021-10-21 09:31:26.737773", "stderr": "AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.20.10.13. Set the 'ServerName' directive globally to suppress this message", "stderr_lines": ["AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.20.10.13. Set the 'ServerName' directive globally to suppress this message"], "stdout": "httpd (pid 5125) already running", "stdout_lines": ["httpd (pid 5125) already running"]}
+
+TASK [Debug httpd output] **************************************************************************************************
+ok: [docker] => {
+    "msg": {
+        "ansible_facts": {
+            "discovered_interpreter_python": "/usr/bin/python"
+        }, 
+        "changed": true, 
+        "cmd": "httpd -k start", 
+        "delta": "0:00:00.108903", 
+        "end": "2021-10-21 09:31:26.846676", 
+        "failed": false, 
+        "rc": 0, 
+        "start": "2021-10-21 09:31:26.737773", 
+        "stderr": "AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.20.10.13. Set the 'ServerName' directive globally to suppress this message", 
+        "stderr_lines": [
+            "AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.20.10.13. Set the 'ServerName' directive globally to suppress this message"
+        ], 
+        "stdout": "httpd (pid 5125) already running", 
+        "stdout_lines": [
+            "httpd (pid 5125) already running"
+        ]
+    }
+}
+
+TASK [Changed_when not statisfied - output OK status] **********************************************************************
+ok: [docker] => {"changed": false, "cmd": "httpd -k start", "delta": "0:00:00.109066", "end": "2021-10-21 09:31:27.912459", "rc": 0, "start": "2021-10-21 09:31:27.803393", "stderr": "AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.20.10.13. Set the 'ServerName' directive globally to suppress this message", "stderr_lines": ["AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.20.10.13. Set the 'ServerName' directive globally to suppress this message"], "stdout": "httpd (pid 5125) already running", "stdout_lines": ["httpd (pid 5125) already running"]}
+
+TASK [Changed_when statisfied - output CHANGED status] *********************************************************************
+changed: [docker] => {"changed": true, "cmd": "httpd -k start", "delta": "0:00:00.083230", "end": "2021-10-21 09:31:28.926839", "rc": 0, "start": "2021-10-21 09:31:28.843609", "stderr": "AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.20.10.13. Set the 'ServerName' directive globally to suppress this message", "stderr_lines": ["AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.20.10.13. Set the 'ServerName' directive globally to suppress this message"], "stdout": "httpd (pid 5125) already running", "stdout_lines": ["httpd (pid 5125) already running"]}
+
+TASK [Failed_when not statisfied - output CHANGED status] ******************************************************************
+changed: [docker] => {"changed": true, "cmd": "httpd -k start", "delta": "0:00:00.102282", "end": "2021-10-21 09:31:29.897246", "failed_when_result": false, "rc": 0, "start": "2021-10-21 09:31:29.794964", "stderr": "AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.20.10.13. Set the 'ServerName' directive globally to suppress this message", "stderr_lines": ["AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.20.10.13. Set the 'ServerName' directive globally to suppress this message"], "stdout": "httpd (pid 5125) already running", "stdout_lines": ["httpd (pid 5125) already running"]}
+
+TASK [Failed_when statisfied - output FAILED status] ***********************************************************************
+fatal: [docker]: FAILED! => {"changed": true, "cmd": "httpd -k start", "delta": "0:00:00.096673", "end": "2021-10-21 09:31:30.875029", "failed_when_result": true, "rc": 0, "start": "2021-10-21 09:31:30.778356", "stderr": "AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.20.10.13. Set the 'ServerName' directive globally to suppress this message", "stderr_lines": ["AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.20.10.13. Set the 'ServerName' directive globally to suppress this message"], "stdout": "httpd (pid 5125) already running", "stdout_lines": ["httpd (pid 5125) already running"]}
+...ignoring
+
+PLAY [Block - Rescue - Always] *********************************************************************************************
+
+TASK [Checking / Free space] ***********************************************************************************************
+changed: [docker] => {"changed": true, "cmd": "df -h /tmp|grep -v Filesystem|awk '{print $4}'|cut -d G -f1", "delta": "0:00:00.019035", "end": "2021-10-21 09:31:31.809156", "rc": 0, "start": "2021-10-21 09:31:31.790121", "stderr": "", "stderr_lines": [], "stdout": "6.8", "stdout_lines": ["6.8"]}
+
+TASK [Creating Backup Dir under / - BLOCK] *********************************************************************************
+skipping: [docker] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [copy Files to /backup - BLOCK] ***************************************************************************************
+skipping: [docker] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [sending report to Team  - ALWAYS] ************************************************************************************
+skipping: [docker] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+PLAY RECAP *****************************************************************************************************************
+docker                     : ok=7    changed=5    unreachable=0    failed=0    skipped=3    rescued=0    ignored=1   
+

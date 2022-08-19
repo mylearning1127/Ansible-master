@@ -1,0 +1,36 @@
+
+PLAY [Cloud Migration] *****************************************************************************************************
+[warning]: cloud not match supplied host pattern, ignoring: awx1*
+[warning]: cloud not match supplied host pattern, ignoring: awx2*
+[warning]: cloud not match supplied host pattern, ignoring: awx3*
+
+fatal: [sudoissue21.test.com] suod, interpreter
+fatal: [sudoissue11.test.com] suod, interpreter
+TASK [Confirming shutdown status] ******************************************************************************************
+fatal: [docker3]: FAILED! => {"msg": "Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host's fingerprint to your known_hosts file to manage this host."}
+fatal: [docker4]: FAILED! => {"msg": "Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host's fingerprint to your known_hosts file to manage this host."}
+fatal: [docker5]: FAILED! => {"msg": "Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host's fingerprint to your known_hosts file to manage this host."}
+fatal: [docker6]: FAILED! => {"msg": "Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host's fingerprint to your known_hosts file to manage this host."}
+fatal: [docker7]: FAILED! => {"msg": "Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host's fingerprint to your known_hosts file to manage this host."}
+fatal: [docker8]: FAILED! => {"msg": "Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host's fingerprint to your known_hosts file to manage this host."}
+fatal: [docker9]: FAILED! => {"msg": "Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host's fingerprint to your known_hosts file to manage this host."}
+fatal: [docker10]: FAILED! => {"msg": "Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host's fingerprint to your known_hosts file to manage this host."}
+ok: [docker1]
+ok: [docker2]
+fatal: [awx]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host awx port 22: No route to host", "unreachable": true}
+fatal: [docker]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: Could not resolve hostname docker: Name or service not known", "unreachable": true}
+
+PLAY RECAP *****************************************************************************************************************
+awx                        : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+docker.test.com                     : ok=3    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+docker1.test.com                    : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+docker10.test.com                   : ok=3    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+docker2.test.com                    : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+docker3.test.com                    : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+docker4.test.com                    : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+docker5.test.com                    : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+docker6.test.com                    : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+docker7.test.com                    : ok=3    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+docker8.test.com                    : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+docker9.test.com                    : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+

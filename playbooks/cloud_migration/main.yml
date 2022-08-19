@@ -1,0 +1,41 @@
+---
+- name: Cloud Migration 
+  hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  vars:
+    report: "/report/patching_report"
+
+  tasks:
+  - debug:
+      msg: Must select TAG to use this playbook
+    failed_when: tags is not defined
+
+  - name: Date - Function
+    shell: 'date +"%H-%M-%S"'
+    register: dtf
+    delegate_to: localhost
+    run_once: true
+
+  - name: Precheck for cloud migration
+    include: tasks/precheck.yml
+    tags: precheck
+
+  - name: shutdown servers for cloud migration
+    include: tasks/shutdown.yml
+    tags: shutdown
+
+  - name: postcheck for cloud migration
+    include: tasks/postcheck.yml
+    tags: postcheck
+  
+  handlers:
+  - name: correcting /etc/hosts entry
+    lineinfile:
+      path: /etc/hosts
+      line: "{{postcheck_output.results[5].stdout_lines | join}} {{postcheck_output.results[8].stdout_lines | join}} {{postcheck_output.results[7].stdout_lines | join}}"
+      state: present
+
+  
+

@@ -1,0 +1,54 @@
+---
+
+# Handlers tasks executed based on NOTIFY module.
+# Handlers executed at end of the playbook even it is mentioned as a first task.
+# Task is executed in CHANGED mode INVOKES HANDLERS
+# Task is executed in OK mode does NOT INVOKES HANDLERS
+# IF ANY TASK FAILED IN ENTIRE PLAYBOOK LEADS TO STOPS HANDLERS EVEN HANDLERS CONDITION PASSED.
+
+# Here, First task (Installing NTP if not installed) calls the Handler (Restart NTP service) and states while executing it shows CHANGED but handler is not executed, Because of thrid task has been failed in the playbook.
+# This shows status of notify Used TASK plays major role in Handlers part.
+
+# Ignore_errors enabled on Failed Tasks won't helps to invoke handlers
+# We can use "changed_when: true" for OK state tasks, it will change OK state to CHANGED that will helps to invoke Handlers
+
+- name: Handlers and Tags
+  hosts: all
+  become: yes
+  gather_facts: no
+  
+  tasks:
+  - name: collecting package facts
+    package_facts:
+      manager: auto
+ 
+  - debug:
+      msg: "{{ ansible_facts.packages }}"
+
+  - name: Installing NTP if not installed
+    yum:
+     name: ntp
+     state: present
+#    when: ansible_facts.packages['ntp'][0].name is not defined
+    changed_when: true
+    notify:
+      - Restart NTP service
+
+  - name: copy files
+    copy:
+      src: /opt/Ansible/bash
+      dest: /tmp
+
+#  - name: Testing Handlers working or not if any task failed in play
+#    yum:
+#     name: nopkg
+#     state: present
+#    ignore_errors: yes
+
+  handlers:
+  - name: Restart NTP service
+    systemd:
+      name: ntpd
+      state: started
+    
+

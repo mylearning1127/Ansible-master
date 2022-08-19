@@ -1,0 +1,83 @@
+---
+- name: Conditional Statment
+  hosts: all
+  become: yes
+  ignore_errors: yes
+  vars:
+    min_memory: 10
+    Server_reboot: True
+
+  tasks:
+  - name: Populate service facts
+    ansible.builtin.service_facts:
+ 
+  - name: Populate package facts
+    ansible.builtin.package_facts:
+      manager: auto
+    tags: package_facts
+
+  - name: Particular Package Version
+    debug:
+      msg: "Package name: {{ ansible_facts.packages['zlib'][0].name }}"
+    tags: package_facts 
+ 
+  - name: All avilable packages
+    debug:
+      msg: " Package Name: {{ item.key }}  Version: {{ item.value[0].version }}"
+    loop: "{{ ansible_facts.packages|dict2items }}"
+    tags: package_facts
+
+  - name: running services
+    debug:
+      msg: " Running services: {{ item.key }} and state is {{ item.value.state }}"
+    with_dict: "{{ ansible_facts.services }}"
+  
+  - name: Print msg for all stopped service
+    debug:
+      msg: "{{ item.key }} is {{ item.value.state }}" 
+    when: item.value.state == "stopped"
+    with_dict: "{{ ansible_facts.services }}"
+#    no_log: true
+
+  - name: select server based on Kernal version
+    debug:
+       msg: "{{ ansible_host }} match with {{ ansible_kernel }} version"
+    when: ansible_kernel == "3.10.0-1160.el7.x86_64"
+    tags: ansible_kernel
+
+  - name: print serers based on distribution
+    debug:
+       msg: "{{ ansible_host }} match with {{ ansible_distribution_version }} version"
+    when: ansible_distribution_version >=7.5
+    tags: ansible_kernel
+
+  - name: Based on variable Reboot server
+    debug:
+       msg: "{{ ansible_host }} min_memory set"
+    when: min_memory is defined
+    tags: ansible_kernel
+
+  - name: patch reboot type check
+    debug:
+       msg: "{{ ansible_host }} going to Reboot"
+    when: Server_reboot
+    tags: ansible_kernel
+
+  - name: Do not reboot server after reboot
+    debug:
+       msg: "{{ ansible_host }} patch applied not going to reboot"
+    when: server_donotreboot is not defined
+    tags: ansible_kernel
+
+  - name: Multi check using AND condition
+    debug:
+       msg: "{{ ansible_host }} satisfied both condition"
+    when: ansible_distribution_version >=7.5 and ansible_kernel == "3.10.0-1160.el7.x86_64"
+    tags: ansible_kernel
+
+  - name: Multi condition USING OR
+    debug:
+       msg: "{{ ansible_host }} OR condition satisfied"
+    when: (ansible_distribution_version >=7.5 or ansible_kernel == "3.10.0-1160.el7.x86_64") and (min_memory is defined or Server_reboot)
+    tags: ansible_kernel
+

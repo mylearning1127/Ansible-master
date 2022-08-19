@@ -1,0 +1,55 @@
+---
+# https://www.networkgalaxy.org/2021/03/ansible-playbook-to-display-output-of.html
+- name: Cloud Migration PreCheck
+  hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: no
+
+  tasks:
+  - debug: 
+      msg: Must select TAG to use this playbook
+    failed_when: tags is not defined
+
+  - name: Precheck at the time of cloud migration
+    command: "{{ item }}"
+    loop:
+     - "uname -r"
+     - "uptime"
+     - "/usr/bin/vmware-toolbox-cmd"
+     - "cat /etc/redhat-release"
+     - "hostname"
+     - "cat /etc/passwd"
+     - "cat /etc/group"
+     - "/sbin/service --status-all"
+     - "rpm -qa"
+     - "cat /etc/hosts"
+     - "cat /etc/resolv.conf"
+     - "cat /etc/fstab"
+     - "last reboot"
+     - "/sbin/vgs"
+     - "/sbin/lvscan"
+     - "/sbin/iptables -L"
+     - "subscription-manager list --consumed"
+     - "/usr/sbin/ntpq -p"
+     - "vmware-toolbox-cmd -v"
+     - "bash /etc/vmware-tools/service.sh status"
+     - "df -h"
+     - "route -n"
+     - "ifconfig"
+    register: precheck_output
+    ignore_errors: yes
+    tags: precheck
+
+  - debug: "var=precheck_output.results[{{ item }}].stdout_lines"
+    with_sequence: start=0 end=22
+    tags: precheck
+
+  - name: Shutdown servers for Cloud migration
+    command: "shutdown now"
+    tags: shutdown
+    ignore_errors: yes
+
+  - name: Confirming shutdown status
+    ansible.builtin.ping:
+    tags: shutdown

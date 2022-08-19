@@ -1,0 +1,96 @@
+---    
+- name: Error Handling
+  hosts: all
+  become: true
+  gather_facts: no
+  
+  tasks:
+  - name: Starting httpd service
+    shell: "httpd -k start"
+    register: httpdstatus
+
+  - name: Debug httpd output
+    debug:
+      msg: "{{httpdstatus}}"
+ 
+# Changed_when has stdout value as "httpd (pid 5125) already running" so condition not satisfied so in Ansible output shows as "OK" otherwise it should show "CHANGED"
+# Below task and another below write for "OK" and "CHANGED" status examples
+ 
+  - name: Changed_when not statisfied - output OK status
+    shell: "httpd -k start"
+    register: httpdstatus
+    changed_when: "'already running' not in httpdstatus.stdout"
+
+  - name: Changed_when statisfied - output CHANGED status
+    shell: "httpd -k start"
+    register: httpdstatus
+    changed_when: "'already running' in httpdstatus.stdout"
+
+# Failed_when condition shows "Failed" when condition met, and shows "Changed" when condition not met
+# Below task and another below write for "Failed" and "CHANGED" status examples
+
+  - name: Failed_when not statisfied - output CHANGED status
+    shell: "httpd -k start"
+    register: httpdstatus
+    failed_when: "'already running' not in httpdstatus.stdout"
+
+  - name: Failed_when statisfied - output FAILED status
+    shell: "httpd -k start"
+    register: httpdstatus
+    failed_when: "'already running' in httpdstatus.stdout"
+    ignore_errors: true
+
+- name: Block - Rescue - Always
+  hosts: all
+  become: true
+  gather_facts: no
+  
+  tasks:
+  - name: Checking / Free space
+    shell: "df -h /tmp|grep -v Filesystem|awk '{print $4}'|cut -d G -f1"
+    register: freespace
+
+# BLOCK helps to execute muliple tasks into  successfully, and if all tasks mentioned in block executed successfully it won't trigger RESCUE coloumn and ALWAYS coloumn will be executed directly.
+
+# If one task fails under block, RESCUE tasks will executed one by one.
+
+# If we applying when condition to BLOCK that will applicable to ALWAYS coloumn also.
+
+#For example, Here I have two tasks (Creating Backup Dir under /, copy Files to /backup) and when condition applied to BLOCK so task will skip because of condition successful, ALWAYS coloumn also skip because BLOCK condition applicable to ALWAYS alo. Logs available under name of /log/11_output_when_skip.
+
+#Important: Only Failing of task invokes RESCUE tasks otherwise it won't invoke. Here Block tasks, SKIPPING becuse condition not met, so RESCUE won't invoke, ALWAYS SKIPPED because of the condition. 
+
+  - block:
+
+# Failed_when only applicable to this task and if task fails it will execute rescue task items
+# Failed_when should be mentioned within double quote ("")
+
+     - name: Creating Backup Dir under / - BLOCK
+       file:
+        name: /backup
+        state: directory
+       failed_when: "freespace.stdout|float < 8"
+ 
+     - name: copy Files to /backup - BLOCK
+       copy:
+        src: /opt/Ansible/bash
+        dest: /backup
+        mode: 0755
+#    when: freespace.stdout|float > 8
+
+# If anyone task fails in BLOCK coloumn, RESCUE coloumn task will be excuted. Otherwise it will be skipped by Ansible. 
+    rescue:
+     - name: Debugging in rescue mode - RESCUE
+       debug:
+         msg: "System / filesystem only have {{freespace.stdout}} space, so backup process not started"
+     
+    always:   
+     - name: sending report to Team  - ALWAYS 
+       mail: 
+        host: localhost
+        port: 25
+        from: ansible-tower@test.com
+        to: suthan.vmk@hotmail.com
+        subject: System / filesystem only have {{freespace.stdout}} space
+        body: backup process stopped 
+

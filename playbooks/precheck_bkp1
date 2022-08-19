@@ -1,0 +1,27 @@
+---
+- name: Cloud Migration PreCheck
+  hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: no
+
+  tasks:
+  - name: Precheck at the time of cloud migration
+    command: "{{ item }}"
+    loop:
+     - "df -h"
+     - "route -n"
+    register: precheck_output
+    tags: precheck
+
+  - debug: 
+      var: precheck_output.results[0].item
+    tags: precheck
+
+  - name: Shutdown servers for Cloud migration
+    command: "shutdown now"
+    tags: shutdown
+
+  - name: Confirming shutdown status
+    ansible.builtin.ping:
+    tags: shutdown

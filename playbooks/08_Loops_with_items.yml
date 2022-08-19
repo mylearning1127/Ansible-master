@@ -1,0 +1,120 @@
+---
+- name: Checking with_items and Netsed_items
+  hosts: all
+  become: true
+  gather_facts: no
+  vars_files: vars/08_loops.yml                     # vars_files,include_vars working fine.
+
+  tasks:
+#  - name: including vars                   
+#    include_vars: vars/08_loops.yml
+
+  - name: with_items check                           # Check in log/08_output_debug log for easy understanding
+    user:
+      name: "{{ item.name }}" 
+      groups: "{{ item.group }}"
+    ignore_errors: True
+    with_items:
+      - { name: 'suthan', group: 'root' }
+      - { name: 'suthan1', group: 'dev' }
+
+  - name: With_nested check                           # Check in log/08_output_debug log for easy understanding
+    mysql_user:
+     name: "{{ item[0] }}"
+     priv: "{{ item[1] }}"
+    ignore_errors: True
+    with_nested:
+     - [ 'suthan', 'karan' ]
+     - [ 'clientdb', 'empdb', 'patchdb' ]
+
+  - name: calling Vars in with_nested
+    mysql_user:
+     name: "{{ item[0] }}"
+     priv: "{{ item[1] }}"
+    ignore_errors: True
+    with_nested:
+      - "{{ user }}"
+      - "{{ db }}"
+   
+  - name: Var calling using with_dict Method                # Directly calling vars defination different way using with_dict
+    debug:
+      msg: "User {{ item.value }} is {{ item.value.name }} ({{ item.value.telephone }})"
+    with_dict: "{{ users }}"
+  
+  - name: with_file testing
+    debug:                                                # Calling files & print whatever in file in sequence
+      msg: "{{ item }}"
+    with_file:                              
+      - files/08_file1
+      - files/08_file2
+  - name: debug loops in normal way
+    debug:
+     msg: 
+      - "{{ alpha }}"
+      - "{{ numbers }}"
+    tags: debug
+  
+  - name: debug loops in with_together method
+    debug:
+      msg:
+       - "{{ item[0] }}"
+       - "{{ item[1] }}"
+    with_together:
+      - "{{ alpha }}"
+      - "{{ numbers }}"
+    tags: debug
+  
+  - name: debug loops in with_items method
+    debug:
+      msg:  
+       - "{{ item }}"
+    with_items:
+       - "{{ alpha }}"
+       - "{{ numbers }}"
+    tags: debug
+
+  - name: debug loops in with_nested method
+    debug:
+      msg:
+       - "{{ item[0] }}"
+       - "{{ item[1] }}"
+    with_nested:
+       - "{{ alpha }}"
+       - "{{ numbers }}"
+    tags: debug
+
+  - name: Directly use Loop
+    debug:
+      msg: "loop value is: {{ item }}"
+    loop: [ 1, 2, 3, 4, 5]
+    tags: loop
+
+  - name: Checking with_sequence             #following sequence, if we use this in file module it can create 5 requence files
+    debug:
+      msg: "Print sequence: {{ item }}"
+    with_sequence: start=1 end=5
+    tags: loop
+
+  - name: Until loop
+    shell: /test.sh
+    register: ouput_value
+    until: ouput_value.stdout.find("patched successfully") != -1
+    retries: 5                                                      # task has been retried for 5 times with a delay of 10 seconds.
+    delay: 5                                                       # default value for “retries” is 3 and “delay” is 5.
+    ignore_errors: True
+    tags: loop
+
+#loop_var helps to assign var to items var.
+#while we are using item in all plays we may encounter the following error while execution
+#The loop variable item is already in use.
+#You should set the loop_var value in the loop_control option for the task to something else to avoid variable collisions and unexpected behavior.
+
+  - name: loop_var testing
+    debug:
+      msg: "Instead of item we are calling loop_vars: {{ loop_vartesting }}"
+    with_items:
+        - a
+        - b
+    loop_control:
+      loop_var: loop_vartesting
+    tags: loop

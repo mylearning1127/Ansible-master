@@ -1,0 +1,6 @@
+---
+- name: Including package installation tasks name
+  yum:
+   name: "{{package}}"
+   state: present
+

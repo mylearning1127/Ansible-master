@@ -1,0 +1,37 @@
+---
+- name: First play
+  hosts: [client1, client2]                            # both will do same function and different types of listing
+  gather_facts: no
+  
+  tasks:
+  - name: Echo hostname
+    command: hostname
+    register: hostname
+
+  - debug:
+      msg: "{{ hostname }}"
+
+- name: Second play                                   
+  hosts:                                                 # both will do same function and different types of listing 
+    - client1
+    - client2
+  gather_facts: no
+  become: no
+
+  tasks:
+  - name: Installing packages Type 1
+    yum:
+     name:
+      - net-tools
+      - wget
+
+  - name: Installing packages Type 2
+    yum:
+     name: [net-tools, wget]
+
+  - name: Checking become "NO"                         # verified, file created with suthan's ownership so become method stopped
+    file:
+     path: /tmp/become-no.check
+     state: touch
+    
+

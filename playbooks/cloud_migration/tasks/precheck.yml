@@ -1,0 +1,152 @@
+---
+  - name: Precheck at the time of cloud migration
+    shell: " {{ item }}"
+    loop:
+     - "uname -r"
+     - "uptime"
+     - "/usr/bin/vmware-toolbox-cmd"
+     - "cat /etc/redhat-release"
+     - "hostname"
+     - "cat /etc/passwd"
+     - "cat /etc/group"
+     - "/sbin/service --status-all"
+     - "rpm -qa"
+     - "cat /etc/hosts"
+     - "cat /etc/resolv.conf"
+     - "cat /etc/fstab"
+     - "last reboot"
+     - "/sbin/vgs"
+     - "/sbin/lvscan"
+     - "/sbin/iptables -L"
+     - "subscription-manager list --consumed"
+     - "/usr/sbin/ntpq -p"
+     - "vmware-toolbox-cmd -v"
+     - "bash /etc/vmware-tools/service.sh status"
+     - "df -h"
+     - "route -n"
+     - "ifconfig"
+     - "df -h | awk '{print $6}'"
+     - "df -h | wc -l"
+    register: precheck_output
+    ignore_errors: yes
+
+
+  - debug: "var=precheck_output.results[{{ item }}].stdout_lines"
+    with_sequence: start=0 end=23
+
+  - name: storing register values in {{ ansible_host }}_precheck.log
+    copy:
+      dest: "{{ report }}/{{ ansible_host }}_precheck.log"
+      content: |
+        output of uname -r:
+        --------------------------------------------
+        {{ precheck_output.results[0].stdout_lines }}
+
+
+        output of "uptime":
+        --------------------------------------------
+        {{ precheck_output.results[1].stdout_lines }}
+
+
+        output of "/usr/bin/vmware-toolbox-cmd" :
+        --------------------------------------------
+        {{ precheck_output.results[2].stdout_lines }}
+
+
+        output of "cat /etc/redhat-release":
+        --------------------------------------------
+        {{ precheck_output.results[3].stdout_lines }}
+
+
+        output of "hostname":
+        --------------------------------------------
+        {{ precheck_output.results[4].stdout_lines }}
+
+        output of "cat /etc/passwd":
+        --------------------------------------------
+        {{ precheck_output.results[5].stdout_lines }}
+
+        output of "cat /etc/group":
+        --------------------------------------------
+        {{ precheck_output.results[6].stdout_lines }}
+
+
+        output of "/sbin/service --status-all"
+        --------------------------------------------
+        {{ precheck_output.results[7].stdout_lines }}
+
+        output of "rpm -qa"
+        --------------------------------------------
+        {{ precheck_output.results[8].stdout_lines }}
+
+        output of "cat /etc/hosts"
+        --------------------------------------------
+        {{ precheck_output.results[9].stdout_lines }}
+
+        output of "cat /etc/resolv.conf"
+        --------------------------------------------
+        {{ precheck_output.results[10].stdout_lines }}
+
+        output of "cat /etc/fstab"
+        --------------------------------------------
+        {{ precheck_output.results[11].stdout_lines }}
+
+
+        output of "last reboot"
+        --------------------------------------------
+        {{ precheck_output.results[12].stdout_lines }}
+
+        output of "/sbin/vgs"
+        --------------------------------------------
+        {{ precheck_output.results[13].stdout_lines }}
+
+        output of "/sbin/lvscan"
+        --------------------------------------------
+        {{ precheck_output.results[14].stdout_lines }}
+
+        output of "/sbin/iptables -L"
+        --------------------------------------------
+        {{ precheck_output.results[15].stdout_lines }}
+
+        output of "subscription-manager list --consumed"
+        --------------------------------------------
+        {{ precheck_output.results[16].stdout_lines }}
+
+        output of "/usr/sbin/ntpq -p"
+        --------------------------------------------
+        {{ precheck_output.results[17].stdout_lines }}
+
+        output of "vmware-toolbox-cmd -v"
+        --------------------------------------------
+        {{ precheck_output.results[18].stdout_lines }}
+
+        output of "bash /etc/vmware-tools/service.sh status"
+        --------------------------------------------
+        {{ precheck_output.results[19].stdout_lines }}
+
+        output of "df -h"
+        --------------------------------------------
+        {{ precheck_output.results[20].stdout_lines }}
+
+        output of "route -n"
+        --------------------------------------------
+        {{ precheck_output.results[21].stdout_lines }}
+
+        output of "ifconfig"
+        --------------------------------------------
+        {{ precheck_output.results[22].stdout_lines }}
+
+        output of "Mounts"
+        --------------------------------------------
+        {{ precheck_output.results[23].stdout_lines }}
+
+        output of "Mount_FS_count"
+        --------------------------------------------
+        {{ precheck_output.results[24].stdout_lines }}
+
+  - name: Fetch file from each host to Ansible
+    fetch:
+      src: "{{ report }}/{{ ansible_host }}_precheck.log"
+      dest: "{{ report }}/{{ ansible_host }}_precheck.log"
+      flat: yes
+

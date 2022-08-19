@@ -1,0 +1,4 @@
+output of "df -h" :
+--------------------------------------------
+[u'Filesystem               Size  Used Avail Use% Mounted on', u'devtmpfs                 908M     0  908M   0% /dev', u'tmpfs                    920M     0  920M   0% /dev/shm', u'tmpfs                    920M  1.2M  918M   1% /run', u'tmpfs                    920M     0  920M   0% /sys/fs/cgroup', u'/dev/mapper/centos-root   14G  7.2G  6.4G  54% /', u'/dev/sda1                950M  150M  800M  16% /boot', u'overlay                   14G  7.2G  6.4G  54% /var/lib/docker/overlay2/8e952980b6fe3503c64b795a0c4b41b341f37cf7170035ee6caba6793506126d/merged', u'shm                       64M     0   64M   0% /var/lib/docker/containers/3645a56a89cc8f37217b4bb16a16cc097b06ce7e8c6c9c5a5fc0c64c5e01e620/shm', u'tmpfs                    184M     0  184M   0% /run/user/0']
+

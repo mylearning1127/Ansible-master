@@ -1,0 +1,63 @@
+---
+- name: Testing loops
+  hosts: all
+  gather_facts: no
+  become: yes
+  vars:
+   packages:
+    - tree
+    - wget
+   user:
+    - { name: 'suthan', group: 'dev' }
+   user_groups:
+    - [ "suthan", "karan" ]
+    - [ "dev", "test", "uat" ]
+   user_comments:
+     suthakar:
+        groups: '[ "dev", "test", "uat" ]'
+        home: '/home/suthakar'
+        comment: 'developer'
+     suthakaran:
+        groups: '[ "dev", "test", "uat" ]'
+        home: '/home/suthakaran'
+        comment: 'developer'
+
+  tasks:
+  - name: Install package with Normal Loop
+    yum:
+     name: "{{ packages }}"
+     state: present
+
+  - name: Adding user using With_items
+    user:
+     name: "{{ item.name }}"
+     groups: "{{ item.group }}"
+    with_items: "{{ user }}"
+
+  - name: Adding multiple user into multiple groups
+    user:
+      name: "{{ item[0] }}"
+      groups: "{{ item[1] }}"
+    with_nested: "{{ user_groups }}"
+
+  - name: Adding users using with_dict
+    user:
+      name: "{{ item.key }}"
+      groups: "{{ item.value.groups }}"
+      home: "{{ item.value.home }}"
+      comment: "{{ item.value.comment }}"
+    with_dict: "{{ user_comments }}"
+  
+  - name: cat files using with_file
+    debug:            
+      msg: "{{ item }}"
+    with_file:                              
+      - files/08_file1
+      - files/08_file2
+   
+  - name: creating files using with_sequence
+    file:
+     path: /tmp/testfile{{ item }}
+     state: directory
+    with_sequence: start=10 end=15
+

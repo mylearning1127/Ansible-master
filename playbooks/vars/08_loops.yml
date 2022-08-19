@@ -1,0 +1,16 @@
+---
+   user:
+     - suthan
+     - karan
+   db:
+     - cliendb
+     - empdb
+   users:                            # Defined method for with_dict, if we try to use - before variable as mentioned above with_dict throws error message
+     alice:
+       name: Alice Appleworth
+       telephone: 123-456-7890
+     bob:
+       name: Bob Bananarama
+       telephone: 987-654-3210
+   alpha: [ 'a', 'b', 'c', 'd' ]
+   numbers:  [ 1, 2, 3, 4 ]

@@ -1,0 +1,11 @@
+---
+- name: Cloud Migration
+  hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: no
+
+  tasks:
+  - name: Confirming shutdown status
+    ansible.builtin.ping:
+

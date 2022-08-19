@@ -1,0 +1,6 @@
+---
+- name: creating content in Intex.html
+  copy:
+    content: 'Executing Ansible plybooks in Inclusion method'
+    dest: "{{index_path}}"
+

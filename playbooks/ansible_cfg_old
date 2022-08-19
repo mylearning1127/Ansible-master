@@ -1,0 +1,20 @@
+[defaults]
+host_key_checking = False
+transport = paramiko
+#remote_tmp = $HOME/.ansible/tmp
+gathering = implicit
+log_path = log/ansible.log
+#http_user_agent = ansible-agent
+ask_pass = True
+forks = 15
+timeout = 15
+retry_files_enabled = False
+deprecation_warnings = False
+#vault_password_file = /etc/ansible/.vault_pass
+#stdout_callback=actionable
+gather_subset=!hardware
+system_warnings = False
+inventory      = hosts
+
+[paramiko]
+record_host_keys = False

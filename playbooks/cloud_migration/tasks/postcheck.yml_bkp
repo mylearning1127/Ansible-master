@@ -1,0 +1,65 @@
+---
+  - set_fact:
+       servername: "{{ ansible_host }}"
+  - name: Post-check on cloud migrated servers
+    shell: "{{ item }}"
+    loop:
+     - "cat /etc/hosts"
+     - "ifconfig"
+     - "df -h"
+     - "df -h | awk '{print $6}'"
+     - "hostname -I | awk '{print $1}' | cut -d'\'. -f1"
+     - "hostname -I | awk '{print $1}'"
+     - "cat /etc/hosts | grep {{ servername }} | awk '{print $1}'"
+     - "hostname -A"
+     - "hostname"
+    register: postcheck_output
+
+  - name: storing register values in postcheck.log
+    copy:
+      dest: "{{ report }}/{{ ansible_host }}_postcheck.log"
+      content: |
+        output of etc/hosts:
+        --------------------------------------------
+        {{ postcheck_output.results[0].stdout_lines }}
+
+
+        output of "ifconfig":
+        --------------------------------------------
+        {{ postcheck_output.results[1].stdout_lines }}
+
+
+        output of "df -h" :
+        --------------------------------------------
+        {{ postcheck_output.results[2].stdout_lines }}
+
+        output of "Mounts" :
+        --------------------------------------------
+        {{ postcheck_output.results[3].stdout_lines }}
+
+        output of "IP address" :
+        --------------------------------------------
+        {{ postcheck_output.results[4] }}
+
+  - name: Fetching postcheck file to Ansible
+    fetch:
+      src: "{{ report }}/{{ ansible_host }}_postcheck.log"
+      dest: "{{ report }}/{{ ansible_host }}_postcheck.log"
+      flat: yes
+
+  - name: Checking Cloud IP starts with 10.0.0.0/24 series
+    debug: 
+      msg: "IP starts with 192.16.0.0/24 series = {{ postcheck_output.results[5].stdout_lines }}"
+    when: '"192" in postcheck_output.results[4].stdout_lines'
+
+  - name: Checking Cloud IP starts with 10.0.0.0/24 series
+    debug: 
+      msg: "IP in different series, cureent IP = {{ postcheck_output.results[5].stdout_lines }}"
+    failed_when: '"192" not in postcheck_output.results[4].stdout_lines'
+    ignore_errors: yes
+
+  - name: checking /etc/hosts Entry
+    lineinfile: dest=/etc/hosts regexp='.*{{postcheck_output.results[6].stdout_lines}}$' line='{{postcheck_output.results[5].stdout_lines | join}}   {{ postcheck_output.results[8].stdout_lines | join}} ' state=present
+    when: postcheck_output.results[5].stdout_lines != postcheck_output.results[6].stdout_lines
+    ignore_errors: yes
+

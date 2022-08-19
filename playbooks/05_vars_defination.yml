@@ -1,0 +1,35 @@
+---
+- name: Explore more about vars
+  hosts: web
+  become: true
+  gather_facts: no
+  vars:
+    user: karan
+    package:
+     web:
+      - httpd
+      - make
+      - gcc
+     db: [mysqld,pmon]
+
+  vars_files:
+   - vars/05_vars.yml
+
+  tasks:
+  - name: Adding apache User
+    user:
+     name: "{{user}}"
+
+  - name: Installing web packages in web node
+    yum:
+     name: "{{package.web}}"
+  
+  - name: Starting "{{package.web}}" service
+    service:
+     name: "{{service}}"
+     enabled: yes
+ 
+  - name: DB package check name "{{package.db}}" 
+    yum:
+     name: wget
+     state: present

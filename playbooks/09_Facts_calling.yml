@@ -1,0 +1,57 @@
+---
+- name: Conditional Statments
+  hosts: all
+  become: true
+  tasks:
+  
+  - name: debuging Ansible Facts
+    debug:
+      msg: 
+       - ansible_forks {{ ansible_forks }}
+       - ansible_inventory_sources {{ ansible_inventory_sources }}
+       - ansible_play_batch {{ ansible_play_batch }}
+       - ansible_play_hosts {{ ansible_play_hosts }}
+       - ansible_play_hosts_all {{ ansible_play_hosts_all }}
+       - ansible_run_tags {{ ansible_run_tags }}
+       - ansible_version {{ ansible_version }}
+       - ansible_verbosity {{ ansible_verbosity }}
+       - group_names {{ group_names }}
+       - groups {{ groups }}
+#       - hostvars {{ hostvars }}
+       - inventory_hostname {{ inventory_hostname }}
+       - inventory_hostname_short {{ inventory_hostname_short }}
+       - inventory_dir {{ inventory_dir }}
+       - play_hosts {{ play_hosts }}
+       - ansible_play_name {{ ansible_play_name }}
+       - playbook_dir {{ playbook_dir }}
+       - ansible_connection {{ ansible_connection }}
+       - ansible_host {{ ansible_host }}
+
+  - name: Analysing Setup Module
+    debug:
+      msg:
+       - "{{ ansible_facts }}"
+       - "architecture: {{ ansible_architecture }}"
+       - "date_time: {{ ansible_date_time.date }}"
+       - "default_ipv4: {{ ansible_default_ipv4.address }}"
+       - " Data type of 'ansible_architecture'  is {{ ansible_architecture | type_debug }} "
+       - " Data type of 'ansible_apparmor' is {{ ansible_apparmor | type_debug }} "
+       - " Data type of 'ansible_all_ipv4_addresses' is {{ ansible_all_ipv4_addresses | type_debug }} "
+       - " Data type of 'ansible_memory_mb' is {{ ansible_memory_mb | type_debug }} "
+
+  - name: print Mount details using LOOP        # Mounts is List Datatype, so we are using LOOP & With-items
+    debug:
+      msg: "Mount Point {{item.mount}} is at {{item.block_used/item.block_total*100}} percent "
+    loop: "{{ansible_mounts}}"
+
+  - name: print Mount details using with_items  # LOOP & With-items doing same functionality
+    debug:
+      msg: "mount {{ item.mount }}"
+    with_items: "{{ansible_mounts}}"
+ 
+  - name: print dict value from ansible_facts   # memory_mb is dictnory Datatype, so we are using with_dict, key helps to print actual name
+    debug:
+      msg: " {{ item.key }}:memory_mb: {{ item.value.free }}"
+    with_dict: "{{ ansible_memory_mb }}"
+    tags: ansible_memory_mb
+     

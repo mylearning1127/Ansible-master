@@ -1,0 +1,843 @@
+
+PLAY [Conditional Statment] ************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************
+ok: [docker]
+
+TASK [Populate service facts] **********************************************************************************************
+ok: [docker]
+
+TASK [running services] ****************************************************************************************************
+ok: [docker] => (item={u'key': u'sshd-keygen.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'sshd-keygen.service'}}) => {
+    "msg": " Ruuning services: sshd-keygen.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-machine-id-commit.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-machine-id-commit.service'}}) => {
+    "msg": " Ruuning services: systemd-machine-id-commit.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'iprinit.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'iprinit.service'}}) => {
+    "msg": " Ruuning services: iprinit.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'systemd-readahead-collect.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-readahead-collect.service'}}) => {
+    "msg": " Ruuning services: systemd-readahead-collect.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'plymouth-kexec.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'plymouth-kexec.service'}}) => {
+    "msg": " Ruuning services: plymouth-kexec.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'plymouth-halt.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'plymouth-halt.service'}}) => {
+    "msg": " Ruuning services: plymouth-halt.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'dracut-pre-mount.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'dracut-pre-mount.service'}}) => {
+    "msg": " Ruuning services: dracut-pre-mount.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'rhsm-facts.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'rhsm-facts.service'}}) => {
+    "msg": " Ruuning services: rhsm-facts.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'NetworkManager-wait-online.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'NetworkManager-wait-online.service'}}) => {
+    "msg": " Ruuning services: NetworkManager-wait-online.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'cpupower.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'stopped', u'name': u'cpupower.service'}}) => {
+    "msg": " Ruuning services: cpupower.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-rfkill@rfkill0.service', u'value': {u'status': u'unknown', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-rfkill@rfkill0.service'}}) => {
+    "msg": " Ruuning services: systemd-rfkill@rfkill0.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-readahead-done.service', u'value': {u'status': u'indirect', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-readahead-done.service'}}) => {
+    "msg": " Ruuning services: systemd-readahead-done.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'getty@tty1.service', u'value': {u'status': u'unknown', u'source': u'systemd', u'state': u'running', u'name': u'getty@tty1.service'}}) => {
+    "msg": " Ruuning services: getty@tty1.service and state is running"
+}
+ok: [docker] => (item={u'key': u'systemd-shutdownd.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-shutdownd.service'}}) => {
+    "msg": " Ruuning services: systemd-shutdownd.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'plymouth-quit-wait.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'stopped', u'name': u'plymouth-quit-wait.service'}}) => {
+    "msg": " Ruuning services: plymouth-quit-wait.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'blk-availability.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'blk-availability.service'}}) => {
+    "msg": " Ruuning services: blk-availability.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'firewalld.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'firewalld.service'}}) => {
+    "msg": " Ruuning services: firewalld.service and state is running"
+}
+ok: [docker] => (item={u'key': u'systemd-hostnamed.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-hostnamed.service'}}) => {
+    "msg": " Ruuning services: systemd-hostnamed.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'dracut-shutdown.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'dracut-shutdown.service'}}) => {
+    "msg": " Ruuning services: dracut-shutdown.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'console-getty.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'console-getty.service'}}) => {
+    "msg": " Ruuning services: console-getty.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'serial-getty@.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'unknown', u'name': u'serial-getty@.service'}}) => {
+    "msg": " Ruuning services: serial-getty@.service and state is unknown"
+}
+ok: [docker] => (item={u'key': u'arp-ethers.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'arp-ethers.service'}}) => {
+    "msg": " Ruuning services: arp-ethers.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'network.service', u'value': {u'status': u'unknown', u'source': u'systemd', u'state': u'stopped', u'name': u'network.service'}}) => {
+    "msg": " Ruuning services: network.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-initctl.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-initctl.service'}}) => {
+    "msg": " Ruuning services: systemd-initctl.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'docker-storage-setup.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'stopped', u'name': u'docker-storage-setup.service'}}) => {
+    "msg": " Ruuning services: docker-storage-setup.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-halt.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-halt.service'}}) => {
+    "msg": " Ruuning services: systemd-halt.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'chrony-dnssrv@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'chrony-dnssrv@.service'}}) => {
+    "msg": " Ruuning services: chrony-dnssrv@.service and state is unknown"
+}
+ok: [docker] => (item={u'key': u'rdisc.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'rdisc.service'}}) => {
+    "msg": " Ruuning services: rdisc.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'systemd-rfkill@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'systemd-rfkill@.service'}}) => {
+    "msg": " Ruuning services: systemd-rfkill@.service and state is unknown"
+}
+ok: [docker] => (item={u'key': u'chrony-wait.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'chrony-wait.service'}}) => {
+    "msg": " Ruuning services: chrony-wait.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'rhel-dmesg.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'rhel-dmesg.service'}}) => {
+    "msg": " Ruuning services: rhel-dmesg.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'brandbot.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'brandbot.service'}}) => {
+    "msg": " Ruuning services: brandbot.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'plymouth-start.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'stopped', u'name': u'plymouth-start.service'}}) => {
+    "msg": " Ruuning services: plymouth-start.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'docker-cleanup.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'stopped', u'name': u'docker-cleanup.service'}}) => {
+    "msg": " Ruuning services: docker-cleanup.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'vgauthd.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'vgauthd.service'}}) => {
+    "msg": " Ruuning services: vgauthd.service and state is running"
+}
+ok: [docker] => (item={u'key': u'plymouth-switch-root.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'plymouth-switch-root.service'}}) => {
+    "msg": " Ruuning services: plymouth-switch-root.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'messagebus.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'active', u'name': u'messagebus.service'}}) => {
+    "msg": " Ruuning services: messagebus.service and state is active"
+}
+ok: [docker] => (item={u'key': u'lvm2-lvmpolld.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'lvm2-lvmpolld.service'}}) => {
+    "msg": " Ruuning services: lvm2-lvmpolld.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'dbus-org.fedoraproject.FirewallD1.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'active', u'name': u'dbus-org.fedoraproject.FirewallD1.service'}}) => {
+    "msg": " Ruuning services: dbus-org.fedoraproject.FirewallD1.service and state is active"
+}
+ok: [docker] => (item={u'key': u'dracut-cmdline.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'dracut-cmdline.service'}}) => {
+    "msg": " Ruuning services: dracut-cmdline.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-vconsole-setup.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-vconsole-setup.service'}}) => {
+    "msg": " Ruuning services: systemd-vconsole-setup.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'rsyncd@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'rsyncd@.service'}}) => {
+    "msg": " Ruuning services: rsyncd@.service and state is unknown"
+}
+ok: [docker] => (item={u'key': u'systemd-ask-password-console.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-ask-password-console.service'}}) => {
+    "msg": " Ruuning services: systemd-ask-password-console.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'lvm2-monitor.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'lvm2-monitor.service'}}) => {
+    "msg": " Ruuning services: lvm2-monitor.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'initrd-switch-root.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'initrd-switch-root.service'}}) => {
+    "msg": " Ruuning services: initrd-switch-root.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-modules-load.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-modules-load.service'}}) => {
+    "msg": " Ruuning services: systemd-modules-load.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'netconsole', u'value': {u'status': u'disabled', u'source': u'sysv', u'state': u'stopped', u'name': u'netconsole'}}) => {
+    "msg": " Ruuning services: netconsole and state is stopped"
+}
+ok: [docker] => (item={u'key': u'registries.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'registries.service'}}) => {
+    "msg": " Ruuning services: registries.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'vmtoolsd.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'vmtoolsd.service'}}) => {
+    "msg": " Ruuning services: vmtoolsd.service and state is running"
+}
+ok: [docker] => (item={u'key': u'postfix.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'postfix.service'}}) => {
+    "msg": " Ruuning services: postfix.service and state is running"
+}
+ok: [docker] => (item={u'key': u'systemd-tmpfiles-clean.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-tmpfiles-clean.service'}}) => {
+    "msg": " Ruuning services: systemd-tmpfiles-clean.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-journal-catalog-update.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-journal-catalog-update.service'}}) => {
+    "msg": " Ruuning services: systemd-journal-catalog-update.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'rsyslog.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'rsyslog.service'}}) => {
+    "msg": " Ruuning services: rsyslog.service and state is running"
+}
+ok: [docker] => (item={u'key': u'rescue.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'rescue.service'}}) => {
+    "msg": " Ruuning services: rescue.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'dbus-org.freedesktop.import1.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'dbus-org.freedesktop.import1.service'}}) => {
+    "msg": " Ruuning services: dbus-org.freedesktop.import1.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'systemd-user-sessions.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-user-sessions.service'}}) => {
+    "msg": " Ruuning services: systemd-user-sessions.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-update-done.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-update-done.service'}}) => {
+    "msg": " Ruuning services: systemd-update-done.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'tuned.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'tuned.service'}}) => {
+    "msg": " Ruuning services: tuned.service and state is running"
+}
+ok: [docker] => (item={u'key': u'systemd-poweroff.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-poweroff.service'}}) => {
+    "msg": " Ruuning services: systemd-poweroff.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'systemd-kexec.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-kexec.service'}}) => {
+    "msg": " Ruuning services: systemd-kexec.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'dbus-org.freedesktop.timedate1.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'dbus-org.freedesktop.timedate1.service'}}) => {
+    "msg": " Ruuning services: dbus-org.freedesktop.timedate1.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'docker.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'docker.service'}}) => {
+    "msg": " Ruuning services: docker.service and state is running"
+}
+ok: [docker] => (item={u'key': u'dracut-pre-udev.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'dracut-pre-udev.service'}}) => {
+    "msg": " Ruuning services: dracut-pre-udev.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'debug-shell.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'debug-shell.service'}}) => {
+    "msg": " Ruuning services: debug-shell.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'systemd-hwdb-update.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-hwdb-update.service'}}) => {
+    "msg": " Ruuning services: systemd-hwdb-update.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'initrd-parse-etc.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'initrd-parse-etc.service'}}) => {
+    "msg": " Ruuning services: initrd-parse-etc.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'dbus-org.freedesktop.machine1.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'dbus-org.freedesktop.machine1.service'}}) => {
+    "msg": " Ruuning services: dbus-org.freedesktop.machine1.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'dracut-pre-pivot.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'dracut-pre-pivot.service'}}) => {
+    "msg": " Ruuning services: dracut-pre-pivot.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-logind.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'running', u'name': u'systemd-logind.service'}}) => {
+    "msg": " Ruuning services: systemd-logind.service and state is running"
+}
+ok: [docker] => (item={u'key': u'rsyncd.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'rsyncd.service'}}) => {
+    "msg": " Ruuning services: rsyncd.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'systemd-suspend.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-suspend.service'}}) => {
+    "msg": " Ruuning services: systemd-suspend.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'systemd-tmpfiles-setup.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-tmpfiles-setup.service'}}) => {
+    "msg": " Ruuning services: systemd-tmpfiles-setup.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'initrd-cleanup.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'initrd-cleanup.service'}}) => {
+    "msg": " Ruuning services: initrd-cleanup.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'lvm2-pvscan@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'lvm2-pvscan@.service'}}) => {
+    "msg": " Ruuning services: lvm2-pvscan@.service and state is unknown"
+}
+ok: [docker] => (item={u'key': u'NetworkManager-dispatcher.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'inactive', u'name': u'NetworkManager-dispatcher.service'}}) => {
+    "msg": " Ruuning services: NetworkManager-dispatcher.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'selinux-policy-migrate-local-changes@targeted.service', u'value': {u'status': u'unknown', u'source': u'systemd', u'state': u'stopped', u'name': u'selinux-policy-migrate-local-changes@targeted.service'}}) => {
+    "msg": " Ruuning services: selinux-policy-migrate-local-changes@targeted.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'getty@.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'unknown', u'name': u'getty@.service'}}) => {
+    "msg": " Ruuning services: getty@.service and state is unknown"
+}
+ok: [docker] => (item={u'key': u'console-shell.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'console-shell.service'}}) => {
+    "msg": " Ruuning services: console-shell.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'chronyd.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'chronyd.service'}}) => {
+    "msg": " Ruuning services: chronyd.service and state is running"
+}
+ok: [docker] => (item={u'key': u'systemd-journal-flush.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-journal-flush.service'}}) => {
+    "msg": " Ruuning services: systemd-journal-flush.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'dbus.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'running', u'name': u'dbus.service'}}) => {
+    "msg": " Ruuning services: dbus.service and state is running"
+}
+ok: [docker] => (item={u'key': u'systemd-machined.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-machined.service'}}) => {
+    "msg": " Ruuning services: systemd-machined.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'systemd-sysctl.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-sysctl.service'}}) => {
+    "msg": " Ruuning services: systemd-sysctl.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-udev-settle.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-udev-settle.service'}}) => {
+    "msg": " Ruuning services: systemd-udev-settle.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'systemd-tmpfiles-setup-dev.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-tmpfiles-setup-dev.service'}}) => {
+    "msg": " Ruuning services: systemd-tmpfiles-setup-dev.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-firstboot.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-firstboot.service'}}) => {
+    "msg": " Ruuning services: systemd-firstboot.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'dbus-org.freedesktop.locale1.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'dbus-org.freedesktop.locale1.service'}}) => {
+    "msg": " Ruuning services: dbus-org.freedesktop.locale1.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'systemd-reboot.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-reboot.service'}}) => {
+    "msg": " Ruuning services: systemd-reboot.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'teamd@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'teamd@.service'}}) => {
+    "msg": " Ruuning services: teamd@.service and state is unknown"
+}
+ok: [docker] => (item={u'key': u'plymouth-quit.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'stopped', u'name': u'plymouth-quit.service'}}) => {
+    "msg": " Ruuning services: plymouth-quit.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-ask-password-plymouth.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-ask-password-plymouth.service'}}) => {
+    "msg": " Ruuning services: systemd-ask-password-plymouth.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'halt-local.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'halt-local.service'}}) => {
+    "msg": " Ruuning services: halt-local.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'dbus-org.freedesktop.nm-dispatcher.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'inactive', u'name': u'dbus-org.freedesktop.nm-dispatcher.service'}}) => {
+    "msg": " Ruuning services: dbus-org.freedesktop.nm-dispatcher.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'systemd-udev-trigger.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-udev-trigger.service'}}) => {
+    "msg": " Ruuning services: systemd-udev-trigger.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'sshd@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'sshd@.service'}}) => {
+    "msg": " Ruuning services: sshd@.service and state is unknown"
+}
+ok: [docker] => (item={u'key': u'rhel-autorelabel.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'rhel-autorelabel.service'}}) => {
+    "msg": " Ruuning services: rhel-autorelabel.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'container-getty@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'container-getty@.service'}}) => {
+    "msg": " Ruuning services: container-getty@.service and state is unknown"
+}
+ok: [docker] => (item={u'key': u'systemd-importd.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-importd.service'}}) => {
+    "msg": " Ruuning services: systemd-importd.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'rhel-readonly.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'rhel-readonly.service'}}) => {
+    "msg": " Ruuning services: rhel-readonly.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-timedated.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-timedated.service'}}) => {
+    "msg": " Ruuning services: systemd-timedated.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'systemd-ask-password-wall.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-ask-password-wall.service'}}) => {
+    "msg": " Ruuning services: systemd-ask-password-wall.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'auditd.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'auditd.service'}}) => {
+    "msg": " Ruuning services: auditd.service and state is running"
+}
+ok: [docker] => (item={u'key': u'plymouth-read-write.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'stopped', u'name': u'plymouth-read-write.service'}}) => {
+    "msg": " Ruuning services: plymouth-read-write.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'rhel-domainname.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'rhel-domainname.service'}}) => {
+    "msg": " Ruuning services: rhel-domainname.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'lvm2-lvmetad.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'running', u'name': u'lvm2-lvmetad.service'}}) => {
+    "msg": " Ruuning services: lvm2-lvmetad.service and state is running"
+}
+ok: [docker] => (item={u'key': u'rhsmcertd.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'rhsmcertd.service'}}) => {
+    "msg": " Ruuning services: rhsmcertd.service and state is running"
+}
+ok: [docker] => (item={u'key': u'dracut-mount.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'dracut-mount.service'}}) => {
+    "msg": " Ruuning services: dracut-mount.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-nspawn@.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'unknown', u'name': u'systemd-nspawn@.service'}}) => {
+    "msg": " Ruuning services: systemd-nspawn@.service and state is unknown"
+}
+ok: [docker] => (item={u'key': u'plymouth-reboot.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'plymouth-reboot.service'}}) => {
+    "msg": " Ruuning services: plymouth-reboot.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'autovt@.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'unknown', u'name': u'autovt@.service'}}) => {
+    "msg": " Ruuning services: autovt@.service and state is unknown"
+}
+ok: [docker] => (item={u'key': u'iprupdate.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'iprupdate.service'}}) => {
+    "msg": " Ruuning services: iprupdate.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'kmod-static-nodes.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'kmod-static-nodes.service'}}) => {
+    "msg": " Ruuning services: kmod-static-nodes.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'crond.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'crond.service'}}) => {
+    "msg": " Ruuning services: crond.service and state is running"
+}
+ok: [docker] => (item={u'key': u'iprdump.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'iprdump.service'}}) => {
+    "msg": " Ruuning services: iprdump.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'systemd-update-utmp.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-update-utmp.service'}}) => {
+    "msg": " Ruuning services: systemd-update-utmp.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'initrd-udevadm-cleanup-db.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'initrd-udevadm-cleanup-db.service'}}) => {
+    "msg": " Ruuning services: initrd-udevadm-cleanup-db.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'rc-local.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'rc-local.service'}}) => {
+    "msg": " Ruuning services: rc-local.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'polkit.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'running', u'name': u'polkit.service'}}) => {
+    "msg": " Ruuning services: polkit.service and state is running"
+}
+ok: [docker] => (item={u'key': u'systemd-random-seed.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-random-seed.service'}}) => {
+    "msg": " Ruuning services: systemd-random-seed.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'ebtables.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'stopped', u'name': u'ebtables.service'}}) => {
+    "msg": " Ruuning services: ebtables.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-backlight@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'systemd-backlight@.service'}}) => {
+    "msg": " Ruuning services: systemd-backlight@.service and state is unknown"
+}
+ok: [docker] => (item={u'key': u'dracut-pre-trigger.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'dracut-pre-trigger.service'}}) => {
+    "msg": " Ruuning services: dracut-pre-trigger.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-fsck-root.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-fsck-root.service'}}) => {
+    "msg": " Ruuning services: systemd-fsck-root.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-hybrid-sleep.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-hybrid-sleep.service'}}) => {
+    "msg": " Ruuning services: systemd-hybrid-sleep.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'rhel-import-state.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'rhel-import-state.service'}}) => {
+    "msg": " Ruuning services: rhel-import-state.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'kdump.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'kdump.service'}}) => {
+    "msg": " Ruuning services: kdump.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'mysqld.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'mysqld.service'}}) => {
+    "msg": " Ruuning services: mysqld.service and state is running"
+}
+ok: [docker] => (item={u'key': u'systemd-fsck@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'systemd-fsck@.service'}}) => {
+    "msg": " Ruuning services: systemd-fsck@.service and state is unknown"
+}
+ok: [docker] => (item={u'key': u'systemd-localed.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-localed.service'}}) => {
+    "msg": " Ruuning services: systemd-localed.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'rhsm.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'rhsm.service'}}) => {
+    "msg": " Ruuning services: rhsm.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'wpa_supplicant.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'wpa_supplicant.service'}}) => {
+    "msg": " Ruuning services: wpa_supplicant.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'systemd-hibernate.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-hibernate.service'}}) => {
+    "msg": " Ruuning services: systemd-hibernate.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'fstrim.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'fstrim.service'}}) => {
+    "msg": " Ruuning services: fstrim.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'systemd-hibernate-resume@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'systemd-hibernate-resume@.service'}}) => {
+    "msg": " Ruuning services: systemd-hibernate-resume@.service and state is unknown"
+}
+ok: [docker] => (item={u'key': u'rhel-configure.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'rhel-configure.service'}}) => {
+    "msg": " Ruuning services: rhel-configure.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'microcode.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'microcode.service'}}) => {
+    "msg": " Ruuning services: microcode.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'rhel-autorelabel-mark.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'rhel-autorelabel-mark.service'}}) => {
+    "msg": " Ruuning services: rhel-autorelabel-mark.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'plymouth-poweroff.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'plymouth-poweroff.service'}}) => {
+    "msg": " Ruuning services: plymouth-poweroff.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'emergency.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'emergency.service'}}) => {
+    "msg": " Ruuning services: emergency.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'NetworkManager.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'NetworkManager.service'}}) => {
+    "msg": " Ruuning services: NetworkManager.service and state is running"
+}
+ok: [docker] => (item={u'key': u'systemd-update-utmp-runlevel.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-update-utmp-runlevel.service'}}) => {
+    "msg": " Ruuning services: systemd-update-utmp-runlevel.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'quotaon.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'quotaon.service'}}) => {
+    "msg": " Ruuning services: quotaon.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'systemd-binfmt.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-binfmt.service'}}) => {
+    "msg": " Ruuning services: systemd-binfmt.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'lvm2-pvscan@8:2.service', u'value': {u'status': u'unknown', u'source': u'systemd', u'state': u'stopped', u'name': u'lvm2-pvscan@8:2.service'}}) => {
+    "msg": " Ruuning services: lvm2-pvscan@8:2.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-readahead-drop.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-readahead-drop.service'}}) => {
+    "msg": " Ruuning services: systemd-readahead-drop.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'dm-event.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'dm-event.service'}}) => {
+    "msg": " Ruuning services: dm-event.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-udevd.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'running', u'name': u'systemd-udevd.service'}}) => {
+    "msg": " Ruuning services: systemd-udevd.service and state is running"
+}
+ok: [docker] => (item={u'key': u'systemd-readahead-replay.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-readahead-replay.service'}}) => {
+    "msg": " Ruuning services: systemd-readahead-replay.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'rhel-loadmodules.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'rhel-loadmodules.service'}}) => {
+    "msg": " Ruuning services: rhel-loadmodules.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'network', u'value': {u'status': u'enabled', u'source': u'sysv', u'state': u'running', u'name': u'network'}}) => {
+    "msg": " Ruuning services: network and state is running"
+}
+ok: [docker] => (item={u'key': u'systemd-bootchart.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-bootchart.service'}}) => {
+    "msg": " Ruuning services: systemd-bootchart.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'mysqld@.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'unknown', u'name': u'mysqld@.service'}}) => {
+    "msg": " Ruuning services: mysqld@.service and state is unknown"
+}
+ok: [docker] => (item={u'key': u'selinux-policy-migrate-local-changes@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'selinux-policy-migrate-local-changes@.service'}}) => {
+    "msg": " Ruuning services: selinux-policy-migrate-local-changes@.service and state is unknown"
+}
+ok: [docker] => (item={u'key': u'dbus-org.freedesktop.login1.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'active', u'name': u'dbus-org.freedesktop.login1.service'}}) => {
+    "msg": " Ruuning services: dbus-org.freedesktop.login1.service and state is active"
+}
+ok: [docker] => (item={u'key': u'sshd.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'sshd.service'}}) => {
+    "msg": " Ruuning services: sshd.service and state is running"
+}
+ok: [docker] => (item={u'key': u'systemd-remount-fs.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-remount-fs.service'}}) => {
+    "msg": " Ruuning services: systemd-remount-fs.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-journald.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'running', u'name': u'systemd-journald.service'}}) => {
+    "msg": " Ruuning services: systemd-journald.service and state is running"
+}
+ok: [docker] => (item={u'key': u'systemd-quotacheck.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-quotacheck.service'}}) => {
+    "msg": " Ruuning services: systemd-quotacheck.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'dbus-org.freedesktop.hostname1.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'dbus-org.freedesktop.hostname1.service'}}) => {
+    "msg": " Ruuning services: dbus-org.freedesktop.hostname1.service and state is inactive"
+}
+ok: [docker] => (item={u'key': u'dracut-initqueue.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'dracut-initqueue.service'}}) => {
+    "msg": " Ruuning services: dracut-initqueue.service and state is stopped"
+}
+ok: [docker] => (item={u'key': u'irqbalance.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'irqbalance.service'}}) => {
+    "msg": " Ruuning services: irqbalance.service and state is running"
+}
+
+TASK [Print msg for all stopped service] ***********************************************************************************
+ok: [docker] => (item={u'key': u'sshd-keygen.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'sshd-keygen.service'}}) => {
+    "msg": "sshd-keygen.service is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-machine-id-commit.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-machine-id-commit.service'}}) => {
+    "msg": "systemd-machine-id-commit.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'iprinit.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'iprinit.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-readahead-collect.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-readahead-collect.service'}}) => {
+    "msg": "systemd-readahead-collect.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'plymouth-kexec.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'plymouth-kexec.service'}}) 
+skipping: [docker] => (item={u'key': u'plymouth-halt.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'plymouth-halt.service'}}) 
+ok: [docker] => (item={u'key': u'dracut-pre-mount.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'dracut-pre-mount.service'}}) => {
+    "msg": "dracut-pre-mount.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'rhsm-facts.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'rhsm-facts.service'}}) 
+ok: [docker] => (item={u'key': u'NetworkManager-wait-online.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'NetworkManager-wait-online.service'}}) => {
+    "msg": "NetworkManager-wait-online.service is stopped"
+}
+ok: [docker] => (item={u'key': u'cpupower.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'stopped', u'name': u'cpupower.service'}}) => {
+    "msg": "cpupower.service is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-rfkill@rfkill0.service', u'value': {u'status': u'unknown', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-rfkill@rfkill0.service'}}) => {
+    "msg": "systemd-rfkill@rfkill0.service is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-readahead-done.service', u'value': {u'status': u'indirect', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-readahead-done.service'}}) => {
+    "msg": "systemd-readahead-done.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'getty@tty1.service', u'value': {u'status': u'unknown', u'source': u'systemd', u'state': u'running', u'name': u'getty@tty1.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-shutdownd.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-shutdownd.service'}}) => {
+    "msg": "systemd-shutdownd.service is stopped"
+}
+ok: [docker] => (item={u'key': u'plymouth-quit-wait.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'stopped', u'name': u'plymouth-quit-wait.service'}}) => {
+    "msg": "plymouth-quit-wait.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'blk-availability.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'blk-availability.service'}}) 
+skipping: [docker] => (item={u'key': u'firewalld.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'firewalld.service'}}) 
+skipping: [docker] => (item={u'key': u'systemd-hostnamed.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-hostnamed.service'}}) 
+ok: [docker] => (item={u'key': u'dracut-shutdown.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'dracut-shutdown.service'}}) => {
+    "msg": "dracut-shutdown.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'console-getty.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'console-getty.service'}}) 
+skipping: [docker] => (item={u'key': u'serial-getty@.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'unknown', u'name': u'serial-getty@.service'}}) 
+skipping: [docker] => (item={u'key': u'arp-ethers.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'arp-ethers.service'}}) 
+ok: [docker] => (item={u'key': u'network.service', u'value': {u'status': u'unknown', u'source': u'systemd', u'state': u'stopped', u'name': u'network.service'}}) => {
+    "msg": "network.service is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-initctl.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-initctl.service'}}) => {
+    "msg": "systemd-initctl.service is stopped"
+}
+ok: [docker] => (item={u'key': u'docker-storage-setup.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'stopped', u'name': u'docker-storage-setup.service'}}) => {
+    "msg": "docker-storage-setup.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'systemd-halt.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-halt.service'}}) 
+skipping: [docker] => (item={u'key': u'chrony-dnssrv@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'chrony-dnssrv@.service'}}) 
+skipping: [docker] => (item={u'key': u'rdisc.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'rdisc.service'}}) 
+skipping: [docker] => (item={u'key': u'systemd-rfkill@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'systemd-rfkill@.service'}}) 
+skipping: [docker] => (item={u'key': u'chrony-wait.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'chrony-wait.service'}}) 
+ok: [docker] => (item={u'key': u'rhel-dmesg.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'rhel-dmesg.service'}}) => {
+    "msg": "rhel-dmesg.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'brandbot.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'brandbot.service'}}) 
+ok: [docker] => (item={u'key': u'plymouth-start.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'stopped', u'name': u'plymouth-start.service'}}) => {
+    "msg": "plymouth-start.service is stopped"
+}
+ok: [docker] => (item={u'key': u'docker-cleanup.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'stopped', u'name': u'docker-cleanup.service'}}) => {
+    "msg": "docker-cleanup.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'vgauthd.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'vgauthd.service'}}) 
+ok: [docker] => (item={u'key': u'plymouth-switch-root.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'plymouth-switch-root.service'}}) => {
+    "msg": "plymouth-switch-root.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'messagebus.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'active', u'name': u'messagebus.service'}}) 
+ok: [docker] => (item={u'key': u'lvm2-lvmpolld.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'lvm2-lvmpolld.service'}}) => {
+    "msg": "lvm2-lvmpolld.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'dbus-org.fedoraproject.FirewallD1.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'active', u'name': u'dbus-org.fedoraproject.FirewallD1.service'}}) 
+ok: [docker] => (item={u'key': u'dracut-cmdline.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'dracut-cmdline.service'}}) => {
+    "msg": "dracut-cmdline.service is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-vconsole-setup.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-vconsole-setup.service'}}) => {
+    "msg": "systemd-vconsole-setup.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'rsyncd@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'rsyncd@.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-ask-password-console.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-ask-password-console.service'}}) => {
+    "msg": "systemd-ask-password-console.service is stopped"
+}
+ok: [docker] => (item={u'key': u'lvm2-monitor.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'lvm2-monitor.service'}}) => {
+    "msg": "lvm2-monitor.service is stopped"
+}
+ok: [docker] => (item={u'key': u'initrd-switch-root.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'initrd-switch-root.service'}}) => {
+    "msg": "initrd-switch-root.service is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-modules-load.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-modules-load.service'}}) => {
+    "msg": "systemd-modules-load.service is stopped"
+}
+ok: [docker] => (item={u'key': u'netconsole', u'value': {u'status': u'disabled', u'source': u'sysv', u'state': u'stopped', u'name': u'netconsole'}}) => {
+    "msg": "netconsole is stopped"
+}
+skipping: [docker] => (item={u'key': u'registries.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'registries.service'}}) 
+skipping: [docker] => (item={u'key': u'vmtoolsd.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'vmtoolsd.service'}}) 
+skipping: [docker] => (item={u'key': u'postfix.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'postfix.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-tmpfiles-clean.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-tmpfiles-clean.service'}}) => {
+    "msg": "systemd-tmpfiles-clean.service is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-journal-catalog-update.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-journal-catalog-update.service'}}) => {
+    "msg": "systemd-journal-catalog-update.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'rsyslog.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'rsyslog.service'}}) 
+ok: [docker] => (item={u'key': u'rescue.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'rescue.service'}}) => {
+    "msg": "rescue.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'dbus-org.freedesktop.import1.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'dbus-org.freedesktop.import1.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-user-sessions.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-user-sessions.service'}}) => {
+    "msg": "systemd-user-sessions.service is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-update-done.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-update-done.service'}}) => {
+    "msg": "systemd-update-done.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'tuned.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'tuned.service'}}) 
+skipping: [docker] => (item={u'key': u'systemd-poweroff.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-poweroff.service'}}) 
+skipping: [docker] => (item={u'key': u'systemd-kexec.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-kexec.service'}}) 
+skipping: [docker] => (item={u'key': u'dbus-org.freedesktop.timedate1.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'dbus-org.freedesktop.timedate1.service'}}) 
+skipping: [docker] => (item={u'key': u'docker.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'docker.service'}}) 
+ok: [docker] => (item={u'key': u'dracut-pre-udev.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'dracut-pre-udev.service'}}) => {
+    "msg": "dracut-pre-udev.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'debug-shell.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'debug-shell.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-hwdb-update.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-hwdb-update.service'}}) => {
+    "msg": "systemd-hwdb-update.service is stopped"
+}
+ok: [docker] => (item={u'key': u'initrd-parse-etc.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'initrd-parse-etc.service'}}) => {
+    "msg": "initrd-parse-etc.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'dbus-org.freedesktop.machine1.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'dbus-org.freedesktop.machine1.service'}}) 
+ok: [docker] => (item={u'key': u'dracut-pre-pivot.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'dracut-pre-pivot.service'}}) => {
+    "msg": "dracut-pre-pivot.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'systemd-logind.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'running', u'name': u'systemd-logind.service'}}) 
+skipping: [docker] => (item={u'key': u'rsyncd.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'rsyncd.service'}}) 
+skipping: [docker] => (item={u'key': u'systemd-suspend.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-suspend.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-tmpfiles-setup.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-tmpfiles-setup.service'}}) => {
+    "msg": "systemd-tmpfiles-setup.service is stopped"
+}
+ok: [docker] => (item={u'key': u'initrd-cleanup.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'initrd-cleanup.service'}}) => {
+    "msg": "initrd-cleanup.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'lvm2-pvscan@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'lvm2-pvscan@.service'}}) 
+skipping: [docker] => (item={u'key': u'NetworkManager-dispatcher.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'inactive', u'name': u'NetworkManager-dispatcher.service'}}) 
+ok: [docker] => (item={u'key': u'selinux-policy-migrate-local-changes@targeted.service', u'value': {u'status': u'unknown', u'source': u'systemd', u'state': u'stopped', u'name': u'selinux-policy-migrate-local-changes@targeted.service'}}) => {
+    "msg": "selinux-policy-migrate-local-changes@targeted.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'getty@.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'unknown', u'name': u'getty@.service'}}) 
+skipping: [docker] => (item={u'key': u'console-shell.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'console-shell.service'}}) 
+skipping: [docker] => (item={u'key': u'chronyd.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'chronyd.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-journal-flush.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-journal-flush.service'}}) => {
+    "msg": "systemd-journal-flush.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'dbus.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'running', u'name': u'dbus.service'}}) 
+skipping: [docker] => (item={u'key': u'systemd-machined.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-machined.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-sysctl.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-sysctl.service'}}) => {
+    "msg": "systemd-sysctl.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'systemd-udev-settle.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-udev-settle.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-tmpfiles-setup-dev.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-tmpfiles-setup-dev.service'}}) => {
+    "msg": "systemd-tmpfiles-setup-dev.service is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-firstboot.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-firstboot.service'}}) => {
+    "msg": "systemd-firstboot.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'dbus-org.freedesktop.locale1.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'dbus-org.freedesktop.locale1.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-reboot.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-reboot.service'}}) => {
+    "msg": "systemd-reboot.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'teamd@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'teamd@.service'}}) 
+ok: [docker] => (item={u'key': u'plymouth-quit.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'stopped', u'name': u'plymouth-quit.service'}}) => {
+    "msg": "plymouth-quit.service is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-ask-password-plymouth.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-ask-password-plymouth.service'}}) => {
+    "msg": "systemd-ask-password-plymouth.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'halt-local.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'halt-local.service'}}) 
+skipping: [docker] => (item={u'key': u'dbus-org.freedesktop.nm-dispatcher.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'inactive', u'name': u'dbus-org.freedesktop.nm-dispatcher.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-udev-trigger.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-udev-trigger.service'}}) => {
+    "msg": "systemd-udev-trigger.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'sshd@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'sshd@.service'}}) 
+ok: [docker] => (item={u'key': u'rhel-autorelabel.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'rhel-autorelabel.service'}}) => {
+    "msg": "rhel-autorelabel.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'container-getty@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'container-getty@.service'}}) 
+skipping: [docker] => (item={u'key': u'systemd-importd.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-importd.service'}}) 
+ok: [docker] => (item={u'key': u'rhel-readonly.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'rhel-readonly.service'}}) => {
+    "msg": "rhel-readonly.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'systemd-timedated.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-timedated.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-ask-password-wall.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-ask-password-wall.service'}}) => {
+    "msg": "systemd-ask-password-wall.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'auditd.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'auditd.service'}}) 
+ok: [docker] => (item={u'key': u'plymouth-read-write.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'stopped', u'name': u'plymouth-read-write.service'}}) => {
+    "msg": "plymouth-read-write.service is stopped"
+}
+ok: [docker] => (item={u'key': u'rhel-domainname.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'rhel-domainname.service'}}) => {
+    "msg": "rhel-domainname.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'lvm2-lvmetad.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'running', u'name': u'lvm2-lvmetad.service'}}) 
+skipping: [docker] => (item={u'key': u'rhsmcertd.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'rhsmcertd.service'}}) 
+ok: [docker] => (item={u'key': u'dracut-mount.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'dracut-mount.service'}}) => {
+    "msg": "dracut-mount.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'systemd-nspawn@.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'unknown', u'name': u'systemd-nspawn@.service'}}) 
+skipping: [docker] => (item={u'key': u'plymouth-reboot.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'plymouth-reboot.service'}}) 
+skipping: [docker] => (item={u'key': u'autovt@.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'unknown', u'name': u'autovt@.service'}}) 
+skipping: [docker] => (item={u'key': u'iprupdate.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'iprupdate.service'}}) 
+ok: [docker] => (item={u'key': u'kmod-static-nodes.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'kmod-static-nodes.service'}}) => {
+    "msg": "kmod-static-nodes.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'crond.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'crond.service'}}) 
+skipping: [docker] => (item={u'key': u'iprdump.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'iprdump.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-update-utmp.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-update-utmp.service'}}) => {
+    "msg": "systemd-update-utmp.service is stopped"
+}
+ok: [docker] => (item={u'key': u'initrd-udevadm-cleanup-db.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'initrd-udevadm-cleanup-db.service'}}) => {
+    "msg": "initrd-udevadm-cleanup-db.service is stopped"
+}
+ok: [docker] => (item={u'key': u'rc-local.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'rc-local.service'}}) => {
+    "msg": "rc-local.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'polkit.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'running', u'name': u'polkit.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-random-seed.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-random-seed.service'}}) => {
+    "msg": "systemd-random-seed.service is stopped"
+}
+ok: [docker] => (item={u'key': u'ebtables.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'stopped', u'name': u'ebtables.service'}}) => {
+    "msg": "ebtables.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'systemd-backlight@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'systemd-backlight@.service'}}) 
+ok: [docker] => (item={u'key': u'dracut-pre-trigger.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'dracut-pre-trigger.service'}}) => {
+    "msg": "dracut-pre-trigger.service is stopped"
+}
+ok: [docker] => (item={u'key': u'systemd-fsck-root.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-fsck-root.service'}}) => {
+    "msg": "systemd-fsck-root.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'systemd-hybrid-sleep.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-hybrid-sleep.service'}}) 
+ok: [docker] => (item={u'key': u'rhel-import-state.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'rhel-import-state.service'}}) => {
+    "msg": "rhel-import-state.service is stopped"
+}
+ok: [docker] => (item={u'key': u'kdump.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'kdump.service'}}) => {
+    "msg": "kdump.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'mysqld.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'mysqld.service'}}) 
+skipping: [docker] => (item={u'key': u'systemd-fsck@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'systemd-fsck@.service'}}) 
+skipping: [docker] => (item={u'key': u'systemd-localed.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-localed.service'}}) 
+skipping: [docker] => (item={u'key': u'rhsm.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'rhsm.service'}}) 
+skipping: [docker] => (item={u'key': u'wpa_supplicant.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'wpa_supplicant.service'}}) 
+skipping: [docker] => (item={u'key': u'systemd-hibernate.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-hibernate.service'}}) 
+skipping: [docker] => (item={u'key': u'fstrim.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'fstrim.service'}}) 
+skipping: [docker] => (item={u'key': u'systemd-hibernate-resume@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'systemd-hibernate-resume@.service'}}) 
+ok: [docker] => (item={u'key': u'rhel-configure.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'rhel-configure.service'}}) => {
+    "msg": "rhel-configure.service is stopped"
+}
+ok: [docker] => (item={u'key': u'microcode.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'microcode.service'}}) => {
+    "msg": "microcode.service is stopped"
+}
+ok: [docker] => (item={u'key': u'rhel-autorelabel-mark.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'rhel-autorelabel-mark.service'}}) => {
+    "msg": "rhel-autorelabel-mark.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'plymouth-poweroff.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'plymouth-poweroff.service'}}) 
+ok: [docker] => (item={u'key': u'emergency.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'emergency.service'}}) => {
+    "msg": "emergency.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'NetworkManager.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'NetworkManager.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-update-utmp-runlevel.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-update-utmp-runlevel.service'}}) => {
+    "msg": "systemd-update-utmp-runlevel.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'quotaon.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'quotaon.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-binfmt.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-binfmt.service'}}) => {
+    "msg": "systemd-binfmt.service is stopped"
+}
+ok: [docker] => (item={u'key': u'lvm2-pvscan@8:2.service', u'value': {u'status': u'unknown', u'source': u'systemd', u'state': u'stopped', u'name': u'lvm2-pvscan@8:2.service'}}) => {
+    "msg": "lvm2-pvscan@8:2.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'systemd-readahead-drop.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-readahead-drop.service'}}) 
+ok: [docker] => (item={u'key': u'dm-event.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'dm-event.service'}}) => {
+    "msg": "dm-event.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'systemd-udevd.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'running', u'name': u'systemd-udevd.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-readahead-replay.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-readahead-replay.service'}}) => {
+    "msg": "systemd-readahead-replay.service is stopped"
+}
+ok: [docker] => (item={u'key': u'rhel-loadmodules.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'stopped', u'name': u'rhel-loadmodules.service'}}) => {
+    "msg": "rhel-loadmodules.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'network', u'value': {u'status': u'enabled', u'source': u'sysv', u'state': u'running', u'name': u'network'}}) 
+skipping: [docker] => (item={u'key': u'systemd-bootchart.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-bootchart.service'}}) 
+skipping: [docker] => (item={u'key': u'mysqld@.service', u'value': {u'status': u'disabled', u'source': u'systemd', u'state': u'unknown', u'name': u'mysqld@.service'}}) 
+skipping: [docker] => (item={u'key': u'selinux-policy-migrate-local-changes@.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'unknown', u'name': u'selinux-policy-migrate-local-changes@.service'}}) 
+skipping: [docker] => (item={u'key': u'dbus-org.freedesktop.login1.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'active', u'name': u'dbus-org.freedesktop.login1.service'}}) 
+skipping: [docker] => (item={u'key': u'sshd.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'sshd.service'}}) 
+ok: [docker] => (item={u'key': u'systemd-remount-fs.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'systemd-remount-fs.service'}}) => {
+    "msg": "systemd-remount-fs.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'systemd-journald.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'running', u'name': u'systemd-journald.service'}}) 
+skipping: [docker] => (item={u'key': u'systemd-quotacheck.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'systemd-quotacheck.service'}}) 
+skipping: [docker] => (item={u'key': u'dbus-org.freedesktop.hostname1.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'inactive', u'name': u'dbus-org.freedesktop.hostname1.service'}}) 
+ok: [docker] => (item={u'key': u'dracut-initqueue.service', u'value': {u'status': u'static', u'source': u'systemd', u'state': u'stopped', u'name': u'dracut-initqueue.service'}}) => {
+    "msg": "dracut-initqueue.service is stopped"
+}
+skipping: [docker] => (item={u'key': u'irqbalance.service', u'value': {u'status': u'enabled', u'source': u'systemd', u'state': u'running', u'name': u'irqbalance.service'}}) 
+
+TASK [select server based on Kernal version] *******************************************************************************
+ok: [docker] => {
+    "msg": "docker match with 3.10.0-1160.el7.x86_64 version"
+}
+
+TASK [print serers based on distribution] **********************************************************************************
+ok: [docker] => {
+    "msg": "docker match with 7.9 version"
+}
+
+TASK [Based on variable Reboot server] *************************************************************************************
+ok: [docker] => {
+    "msg": "docker min_memory set"
+}
+
+TASK [patch reboot type check] *********************************************************************************************
+ok: [docker] => {
+    "msg": "docker going to Reboot"
+}
+
+TASK [Do not reboot server after reboot] ***********************************************************************************
+ok: [docker] => {
+    "msg": "docker patch applied not going to reboot"
+}
+
+TASK [Multi check using AND condition] *************************************************************************************
+ok: [docker] => {
+    "msg": "docker satisfied both condition"
+}
+
+TASK [Multi condition USING OR] ********************************************************************************************
+ok: [docker] => {
+    "msg": "docker OR condition satisfied"
+}
+
+PLAY RECAP *****************************************************************************************************************
+docker                     : ok=11   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

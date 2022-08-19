@@ -1,0 +1,5 @@
+---
+- name: Checking URI from TASK file content
+  uri:
+   url: http://client1/index.html
+   status_code: 200

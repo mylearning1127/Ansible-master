@@ -1,0 +1,28 @@
+[root@Ansible playbooks]# ansible-playbook 07_inclusions.yml -C
+SSH password:
+BECOME password[defaults to SSH password]:
+
+PLAY [Explore more on Inclusions] ******************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************
+ok: [client1]
+
+TASK [Including vars file] *************************************************************************************************
+ok: [client1]
+
+TASK [Including package installation tasks name] ***************************************************************************
+ok: [client1]
+
+TASK [creating content in Intex.html] **************************************************************************************
+ok: [client1]
+
+TASK [Starting service] ****************************************************************************************************
+ok: [client1]
+
+TASK [Checking URI from TASK file content] *********************************************************************************
+skipping: [client1]
+
+PLAY RECAP *****************************************************************************************************************
+client1                    : ok=5    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+[root@Ansible playbooks]#

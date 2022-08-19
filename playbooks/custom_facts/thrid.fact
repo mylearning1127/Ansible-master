@@ -1,0 +1,11 @@
+#!/bin/bash
+server_name=`hostname`
+Today=`date +%Y-%m-%d`
+Log_Dir=/var/log/nets/bap/${server_name}
+loop_count=`ls -lt ${Log_Dir} | grep -v total | wc -l`
+
+if (($loop_count == 0)); then
+    echo "{\"patch_failed\" : \"No Logs Found\"}"
+    exit
+fi
+

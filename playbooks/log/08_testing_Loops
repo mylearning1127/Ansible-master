@@ -1,0 +1,41 @@
+
+PLAY [Testing loops] *******************************************************************************************************
+
+TASK [Install package with Normal Loop] ************************************************************************************
+ok: [192.168.140.129]
+
+TASK [Adding user using With_items] ****************************************************************************************
+changed: [192.168.140.129] => (item={u'group': u'dev', u'name': u'suthan'})
+
+TASK [Adding multiple user into multiple groups] ***************************************************************************
+ok: [192.168.140.129] => (item=[u'suthan', u'dev'])
+changed: [192.168.140.129] => (item=[u'suthan', u'test'])
+changed: [192.168.140.129] => (item=[u'suthan', u'uat'])
+changed: [192.168.140.129] => (item=[u'karan', u'dev'])
+changed: [192.168.140.129] => (item=[u'karan', u'test'])
+changed: [192.168.140.129] => (item=[u'karan', u'uat'])
+
+TASK [Adding users using with_dict] ****************************************************************************************
+ok: [192.168.140.129] => (item={u'key': u'suthakar', u'value': {u'comment': u'developer', u'home': u'/home/suthakar', u'groups': u'[ "dev", "test", "uat" ]'}})
+ok: [192.168.140.129] => (item={u'key': u'suthakaran', u'value': {u'comment': u'developer', u'home': u'/home/suthakaran', u'groups': u'[ "dev", "test", "uat" ]'}})
+
+TASK [cat files using with_file] *******************************************************************************************
+ok: [192.168.140.129] => (item=Hello This is First file) => {
+    "msg": "Hello This is First file"
+}
+ok: [192.168.140.129] => (item=Hello This is Second file :)
+This is Second line of second file) => {
+    "msg": "Hello This is Second file :)\nThis is Second line of second file"
+}
+
+TASK [creating files using with_sequence] **********************************************************************************
+ok: [192.168.140.129] => (item=10)
+ok: [192.168.140.129] => (item=11)
+ok: [192.168.140.129] => (item=12)
+ok: [192.168.140.129] => (item=13)
+ok: [192.168.140.129] => (item=14)
+ok: [192.168.140.129] => (item=15)
+
+PLAY RECAP *****************************************************************************************************************
+192.168.140.129            : ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

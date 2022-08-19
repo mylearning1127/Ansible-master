@@ -1,0 +1,11 @@
+---
+- name: First playbook
+  gather_facts: no
+  tasks:
+  - set_fact:
+      hosts: "{{ target_host }}"
+  - name: Touch file i tmp
+    file:
+     path: /tmp/test.conf
+     state: touch
+
